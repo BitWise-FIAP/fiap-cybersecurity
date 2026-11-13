@@ -4,13 +4,36 @@ import {useSQLiteContext} from 'expo-sqlite';
 import {useFocusEffect,useLocalSearchParams,useRouter} from 'expo-router';
 import {useAuth} from '../../src/context/AuthContext';
 import {getOrder,getOrderPieces,saveFeedback} from '../../src/database/repositories';
+import {safeErrorMessage} from '../../src/security';
+import {reportSecurityEvent,sanitizeComment,scanLocal} from '../../src/services/securityService';
 import type{Order,OrderPiece,FeedbackAnswers} from '../../src/types/models';
 import {colors,radius,typography} from '../../src/constants/theme';
 import {AppScreen,PageHeader,SmallHeading,BodyText,Panel,StatusPill,IconView,PiecePhoto,Button,StateView} from '../../src/components/Design';
 import {datePT} from '../../src/utils/format';
-export default function Feedback(){const {id}=useLocalSearchParams<{id:string}>(),db=useSQLiteContext(),r=useRouter();const [order,setOrder]=useState<Order|null>(null),[pieces,setPieces]=useState<OrderPiece[]>([]),[loading,setLoading]=useState(true),[answers,setAnswers]=useState<FeedbackAnswers>({}),[interview,setInterview]=useState<boolean|null>(null),[comment,setComment]=useState(''),[busy,setBusy]=useState(false);
+export default function Feedback(){const {id}=useLocalSearchParams<{id:string}>(),db=useSQLiteContext(),r=useRouter();const [order,setOrder]=useState<Order|null>(null),[pieces,setPieces]=useState<OrderPiece[]>([]),[loading,setLoading]=useState(true),[answers,setAnswers]=useState<FeedbackAnswers>({}),[interview,setInterview]=useState<boolean|null>(null),[comment,setComment]=useState(''),[busy,setBusy]=useState(false),[piiNotice,setPiiNotice]=useState('');
  useFocusEffect(useCallback(()=>{setLoading(true);Promise.all([getOrder(db,Number(id)),getOrderPieces(db,Number(id))]).then(([o,p])=>{setOrder(o);setPieces(p)}).finally(()=>setLoading(false))},[db,id]));
- const send=async()=>{if(interview===null||pieces.some(p=>typeof answers[p.pedido_item_id]!=='boolean'))return Alert.alert('Respostas necessárias','Informe se cada peça serviu e se já participou de uma entrevista.');try{setBusy(true);await saveFeedback(db,Number(id),answers,interview,comment);Alert.alert('Obrigado pelo feedback!','Suas respostas foram registradas e ajudarão a avaliar os resultados do TRAJEtória.',[{text:'Voltar ao início',onPress:()=>r.replace('/(jovem)/inicio')}])}catch(e){Alert.alert('Erro ao registrar',e instanceof Error?e.message:'Tente novamente.')}finally{setBusy(false)}};
+ const send=async()=>{
+  if(interview===null||pieces.some(p=>typeof answers[p.pedido_item_id]!=='boolean'))return Alert.alert('Respostas necessárias','Informe se cada peça serviu e se já participou de uma entrevista.');
+  const scan=scanLocal(comment);
+  const safeComment=sanitizeComment(comment);
+  if(scan.containsPii){
+   const first=scan.findings[0];
+   setPiiNotice('Dados sensíveis foram mascarados automaticamente antes de salvar seu comentário.');
+   void reportSecurityEvent({source:'form',sink:'database',action:'masked',category:first.category,severity:first.severity,ruleIds:Array.from(new Set(scan.findings.map(f=>f.ruleId))),message:'Feedback salvo com PII mascarada.',maskedValue:first.maskedMatch});
+  }else{
+   setPiiNotice('');
+  }
+  try{
+   setBusy(true);
+   await saveFeedback(db,Number(id),answers,interview,safeComment);
+   if(!scan.containsPii) void reportSecurityEvent({source:'form',sink:'database',action:'allowed',category:'outro',severity:'low',ruleIds:[],message:'Feedback registrado sem PII.'});
+   Alert.alert('Obrigado pelo feedback!','Suas respostas foram registradas e ajudarão a avaliar os resultados do TRAJEtória.',[{text:'Voltar ao início',onPress:()=>r.replace('/(jovem)/inicio')}]);
+  }catch(e){
+   Alert.alert('Erro ao registrar',safeErrorMessage(e,'Tente novamente.'));
+  }finally{
+   setBusy(false);
+  }
+ };
  const choice=(title:string,selected:boolean,onPress:()=>void)=> <Pressable accessibilityRole="radio" accessibilityState={{selected}} onPress={onPress} style={{paddingHorizontal:12,paddingVertical:8,borderRadius:30,borderWidth:1,borderColor:colors.purple,backgroundColor:selected?colors.purple:colors.transparent}}><BodyText style={{color:selected?colors.white:colors.purple,fontFamily:typography.semibold,fontSize:12}}>{title}</BodyText></Pressable>;
  return <AppScreen active="pedidos"><PageHeader title="Feedback" subtitle="Conte pra gente como foi sua experiência com o pedido."/>
  {loading?<StateView mode="loading"/>:!order||order.status!=='entregue'?<StateView mode="empty" message="Este pedido ainda não está entregue ou não foi encontrado." onRetry={()=>r.replace('/(jovem)/meu-pedido')}/>:order.feedback_id?<StateView mode="empty" message="Você já enviou o feedback deste pedido. Obrigado!" onRetry={()=>r.replace('/(jovem)/inicio')}/>:<>
@@ -19,6 +42,7 @@ export default function Feedback(){const {id}=useLocalSearchParams<{id:string}>(
  {pieces.map(p=><View key={p.pedido_item_id} style={{backgroundColor:colors.lilacLight,borderRadius:radius.lg,padding:10,marginBottom:10,flexDirection:'row',alignItems:'center',gap:10}}><PiecePhoto id={p.id} style={{width:65,height:75}}/><View style={{flex:1,gap:5}}><SmallHeading style={{fontSize:15}}>{p.nome}</SmallHeading><BodyText style={{fontSize:12}}>Tamanho: {p.tamanho}</BodyText><View style={{flexDirection:'row',gap:7,flexWrap:'wrap'}}>{choice('👍 Serviu',answers[p.pedido_item_id]===true,()=>setAnswers(x=>({...x,[p.pedido_item_id]:true})))}{choice('Não serviu',answers[p.pedido_item_id]===false,()=>setAnswers(x=>({...x,[p.pedido_item_id]:false})))}</View></View></View>)}
  <View style={{backgroundColor:colors.warningBg,borderRadius:radius.lg,padding:13,marginTop:10,marginBottom:15}}><View style={{flexDirection:'row',alignItems:'center',gap:8}}><IconView name="chatbubbles-outline"/><View style={{flex:1}}><SmallHeading style={{fontSize:15}}>Você já participou de uma entrevista sobre sua experiência?</SmallHeading></View></View><View style={{flexDirection:'row',justifyContent:'flex-end',gap:9,marginTop:10}}>{choice('Sim',interview===true,()=>setInterview(true))}{choice('Não',interview===false,()=>setInterview(false))}</View></View>
  <SmallHeading style={{fontSize:17,marginBottom:6}}>Deixe um comentário (opcional)</SmallHeading><TextInput accessibilityLabel="Comentário opcional" multiline maxLength={300} value={comment} onChangeText={setComment} placeholder="Conte o que achou das peças, do atendimento e da entrega..." placeholderTextColor={colors.muted} style={{height:110,borderWidth:1,borderColor:colors.lavender,backgroundColor:colors.white,borderRadius:18,textAlignVertical:'top',padding:14,color:colors.text,fontFamily:typography.regular,marginBottom:5}}/><BodyText style={{fontSize:11,textAlign:'right',color:colors.muted,marginBottom:20}}>{comment.length}/300</BodyText>
+ {piiNotice?<BodyText style={{fontSize:11,color:colors.danger,marginBottom:10}}>{piiNotice}</BodyText>:null}
  <Button title="Enviar feedback" icon="paper-plane-outline" onPress={send} loading={busy} disabled={interview===null||pieces.some(p=>typeof answers[p.pedido_item_id]!=='boolean')}/><BodyText style={{fontSize:11,textAlign:'center',marginTop:12,color:colors.muted}}>A resposta “Não serviu” ficará registrada para o futuro processo de retorno ao estoque.</BodyText>
  </>}</AppScreen>
 }

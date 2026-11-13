@@ -1,0 +1,198 @@
+{
+  "generatedAt": "2026-11-13T14:30:11.974Z",
+  "fixture": "payload fictício com nome, CPF, e-mail, telefone, endereço, senha, saúde e menor de idade",
+  "containsPii": true,
+  "highestSeverity": "critical",
+  "categories": [
+    "identificacao",
+    "contato",
+    "endereco",
+    "credencial",
+    "outro",
+    "saude",
+    "menor"
+  ],
+  "totalFindings": 20,
+  "findings": [
+    {
+      "ruleId": "FIELD-nome",
+      "category": "identificacao",
+      "severity": "medium",
+      "field": "nome",
+      "path": "nome",
+      "maskedMatch": "[NOME REMOVIDO]"
+    },
+    {
+      "ruleId": "FIELD-cpf",
+      "category": "identificacao",
+      "severity": "high",
+      "field": "cpf",
+      "path": "cpf",
+      "maskedMatch": "[DOCUMENTO REMOVIDO]"
+    },
+    {
+      "ruleId": "PII-CPF",
+      "category": "identificacao",
+      "severity": "high",
+      "field": "cpf",
+      "path": "cpf",
+      "maskedMatch": "***.***.***-**"
+    },
+    {
+      "ruleId": "FIELD-email",
+      "category": "contato",
+      "severity": "medium",
+      "field": "email",
+      "path": "email",
+      "maskedMatch": "[CONTATO REMOVIDO]"
+    },
+    {
+      "ruleId": "PII-EMAIL",
+      "category": "contato",
+      "severity": "medium",
+      "field": "email",
+      "path": "email",
+      "maskedMatch": "***@***.***"
+    },
+    {
+      "ruleId": "FIELD-telefone",
+      "category": "contato",
+      "severity": "medium",
+      "field": "telefone",
+      "path": "telefone",
+      "maskedMatch": "[CONTATO REMOVIDO]"
+    },
+    {
+      "ruleId": "PII-PHONE",
+      "category": "contato",
+      "severity": "medium",
+      "field": "telefone",
+      "path": "telefone",
+      "maskedMatch": "(**) *****-****"
+    },
+    {
+      "ruleId": "FIELD-cep",
+      "category": "endereco",
+      "severity": "low",
+      "field": "cep",
+      "path": "cep",
+      "maskedMatch": "[ENDEREÇO REMOVIDO]"
+    },
+    {
+      "ruleId": "PII-CEP",
+      "category": "endereco",
+      "severity": "low",
+      "field": "cep",
+      "path": "cep",
+      "maskedMatch": "*****-***"
+    },
+    {
+      "ruleId": "FIELD-endereco_logradouro",
+      "category": "endereco",
+      "severity": "medium",
+      "field": "endereco_logradouro",
+      "path": "endereco_logradouro",
+      "maskedMatch": "[ENDEREÇO REMOVIDO]"
+    },
+    {
+      "ruleId": "PII-ADDRESS",
+      "category": "endereco",
+      "severity": "medium",
+      "field": "endereco_logradouro",
+      "path": "endereco_logradouro",
+      "maskedMatch": "[ENDEREÇO REMOVIDO]"
+    },
+    {
+      "ruleId": "FIELD-endereco_numero",
+      "category": "endereco",
+      "severity": "medium",
+      "field": "endereco_numero",
+      "path": "endereco_numero",
+      "maskedMatch": "[ENDEREÇO REMOVIDO]"
+    },
+    {
+      "ruleId": "FIELD-endereco_bairro",
+      "category": "endereco",
+      "severity": "medium",
+      "field": "endereco_bairro",
+      "path": "endereco_bairro",
+      "maskedMatch": "[ENDEREÇO REMOVIDO]"
+    },
+    {
+      "ruleId": "FIELD-endereco_cidade",
+      "category": "endereco",
+      "severity": "medium",
+      "field": "endereco_cidade",
+      "path": "endereco_cidade",
+      "maskedMatch": "[ENDEREÇO REMOVIDO]"
+    },
+    {
+      "ruleId": "FIELD-endereco_uf",
+      "category": "endereco",
+      "severity": "medium",
+      "field": "endereco_uf",
+      "path": "endereco_uf",
+      "maskedMatch": "[ENDEREÇO REMOVIDO]"
+    },
+    {
+      "ruleId": "FIELD-senha",
+      "category": "credencial",
+      "severity": "critical",
+      "field": "senha",
+      "path": "senha",
+      "maskedMatch": "********"
+    },
+    {
+      "ruleId": "FIELD-comentario",
+      "category": "outro",
+      "severity": "low",
+      "field": "comentario",
+      "path": "comentario",
+      "maskedMatch": "[TEXTO LIVRE]"
+    },
+    {
+      "ruleId": "PII-HEALTH",
+      "category": "saude",
+      "severity": "high",
+      "field": "comentario",
+      "path": "comentario",
+      "maskedMatch": "[DADO DE SAÚDE REMOVIDO]"
+    },
+    {
+      "ruleId": "FIELD-menor_de_idade",
+      "category": "menor",
+      "severity": "high",
+      "field": "menor_de_idade",
+      "path": "menor_de_idade",
+      "maskedMatch": "***"
+    },
+    {
+      "ruleId": "FIELD-responsavel",
+      "category": "menor",
+      "severity": "high",
+      "field": "responsavel",
+      "path": "responsavel",
+      "maskedMatch": "***"
+    }
+  ],
+  "redacted": {
+    "nome": "[NOME REMOVIDO]",
+    "cpf": "[DOCUMENTO REMOVIDO]",
+    "email": "[CONTATO REMOVIDO]",
+    "telefone": "[CONTATO REMOVIDO]",
+    "cep": "[ENDEREÇO REMOVIDO]",
+    "endereco_logradouro": "[ENDEREÇO REMOVIDO]",
+    "endereco_numero": "[ENDEREÇO REMOVIDO]",
+    "endereco_bairro": "[ENDEREÇO REMOVIDO]",
+    "endereco_cidade": "[ENDEREÇO REMOVIDO]",
+    "endereco_uf": "[ENDEREÇO REMOVIDO]",
+    "senha": "********",
+    "comentario": "[DADO DE SAÚDE REMOVIDO]",
+    "menor_de_idade": "***",
+    "responsavel": "***"
+  },
+  "privacy": {
+    "rawPiiExposed": false,
+    "note": "A fixture original não é gravada em disco; apenas a versão mascarada."
+  }
+}

@@ -1,0 +1,1609 @@
+{
+  "generatedAt": "2026-11-13T14:30:11.978Z",
+  "source": "form",
+  "fixture": "payload fictício (não persistido)",
+  "traces": [
+    {
+      "sink": "console",
+      "authenticated": false,
+      "action": "blocked",
+      "blocked": true,
+      "allowed": false,
+      "sanitizedPreview": "{\"nome\":\"[NOME REMOVIDO]\",\"cpf\":\"[DOCUMENTO REMOVIDO]\",\"email\":\"[CONTATO REMOVIDO]\",\"telefone\":\"[CONTATO REMOVIDO]\",\"cep\":\"[ENDEREÇO REMOVIDO]\",\"endereco_logradouro\":\"[ENDEREÇO REMOVIDO]\",\"endereco_numero\":\"[ENDEREÇO REMOVIDO]\",\"endereco_bairro\":\"[ENDEREÇO REMOVIDO]\",\"endereco_ci",
+      "findings": [
+        {
+          "ruleId": "FIELD-nome",
+          "category": "identificacao",
+          "severity": "medium",
+          "field": "nome",
+          "maskedMatch": "[NOME REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-cpf",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "[DOCUMENTO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CPF",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "***.***.***-**"
+        },
+        {
+          "ruleId": "FIELD-email",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-EMAIL",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "***@***.***"
+        },
+        {
+          "ruleId": "FIELD-telefone",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-PHONE",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "(**) *****-****"
+        },
+        {
+          "ruleId": "FIELD-cep",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CEP",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "*****-***"
+        },
+        {
+          "ruleId": "FIELD-endereco_logradouro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-ADDRESS",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_numero",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_numero",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_bairro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_bairro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_cidade",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_cidade",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_uf",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_uf",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-senha",
+          "category": "credencial",
+          "severity": "critical",
+          "field": "senha",
+          "maskedMatch": "********"
+        },
+        {
+          "ruleId": "FIELD-comentario",
+          "category": "outro",
+          "severity": "low",
+          "field": "comentario",
+          "maskedMatch": "[TEXTO LIVRE]"
+        },
+        {
+          "ruleId": "PII-HEALTH",
+          "category": "saude",
+          "severity": "high",
+          "field": "comentario",
+          "maskedMatch": "[DADO DE SAÚDE REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-menor_de_idade",
+          "category": "menor",
+          "severity": "high",
+          "field": "menor_de_idade",
+          "maskedMatch": "***"
+        },
+        {
+          "ruleId": "FIELD-responsavel",
+          "category": "menor",
+          "severity": "high",
+          "field": "responsavel",
+          "maskedMatch": "***"
+        }
+      ]
+    },
+    {
+      "sink": "log",
+      "authenticated": false,
+      "action": "blocked",
+      "blocked": true,
+      "allowed": false,
+      "sanitizedPreview": "{\"nome\":\"[NOME REMOVIDO]\",\"cpf\":\"[DOCUMENTO REMOVIDO]\",\"email\":\"[CONTATO REMOVIDO]\",\"telefone\":\"[CONTATO REMOVIDO]\",\"cep\":\"[ENDEREÇO REMOVIDO]\",\"endereco_logradouro\":\"[ENDEREÇO REMOVIDO]\",\"endereco_numero\":\"[ENDEREÇO REMOVIDO]\",\"endereco_bairro\":\"[ENDEREÇO REMOVIDO]\",\"endereco_ci",
+      "findings": [
+        {
+          "ruleId": "FIELD-nome",
+          "category": "identificacao",
+          "severity": "medium",
+          "field": "nome",
+          "maskedMatch": "[NOME REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-cpf",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "[DOCUMENTO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CPF",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "***.***.***-**"
+        },
+        {
+          "ruleId": "FIELD-email",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-EMAIL",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "***@***.***"
+        },
+        {
+          "ruleId": "FIELD-telefone",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-PHONE",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "(**) *****-****"
+        },
+        {
+          "ruleId": "FIELD-cep",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CEP",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "*****-***"
+        },
+        {
+          "ruleId": "FIELD-endereco_logradouro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-ADDRESS",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_numero",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_numero",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_bairro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_bairro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_cidade",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_cidade",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_uf",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_uf",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-senha",
+          "category": "credencial",
+          "severity": "critical",
+          "field": "senha",
+          "maskedMatch": "********"
+        },
+        {
+          "ruleId": "FIELD-comentario",
+          "category": "outro",
+          "severity": "low",
+          "field": "comentario",
+          "maskedMatch": "[TEXTO LIVRE]"
+        },
+        {
+          "ruleId": "PII-HEALTH",
+          "category": "saude",
+          "severity": "high",
+          "field": "comentario",
+          "maskedMatch": "[DADO DE SAÚDE REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-menor_de_idade",
+          "category": "menor",
+          "severity": "high",
+          "field": "menor_de_idade",
+          "maskedMatch": "***"
+        },
+        {
+          "ruleId": "FIELD-responsavel",
+          "category": "menor",
+          "severity": "high",
+          "field": "responsavel",
+          "maskedMatch": "***"
+        }
+      ]
+    },
+    {
+      "sink": "http_response",
+      "authenticated": false,
+      "action": "blocked",
+      "blocked": true,
+      "allowed": false,
+      "sanitizedPreview": "{\"error\":\"Conteúdo protegido\",\"code\":\"PII_BLOCKED\"}",
+      "findings": [
+        {
+          "ruleId": "FIELD-nome",
+          "category": "identificacao",
+          "severity": "medium",
+          "field": "nome",
+          "maskedMatch": "[NOME REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-cpf",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "[DOCUMENTO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CPF",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "***.***.***-**"
+        },
+        {
+          "ruleId": "FIELD-email",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-EMAIL",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "***@***.***"
+        },
+        {
+          "ruleId": "FIELD-telefone",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-PHONE",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "(**) *****-****"
+        },
+        {
+          "ruleId": "FIELD-cep",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CEP",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "*****-***"
+        },
+        {
+          "ruleId": "FIELD-endereco_logradouro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-ADDRESS",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_numero",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_numero",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_bairro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_bairro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_cidade",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_cidade",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_uf",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_uf",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-senha",
+          "category": "credencial",
+          "severity": "critical",
+          "field": "senha",
+          "maskedMatch": "********"
+        },
+        {
+          "ruleId": "FIELD-comentario",
+          "category": "outro",
+          "severity": "low",
+          "field": "comentario",
+          "maskedMatch": "[TEXTO LIVRE]"
+        },
+        {
+          "ruleId": "PII-HEALTH",
+          "category": "saude",
+          "severity": "high",
+          "field": "comentario",
+          "maskedMatch": "[DADO DE SAÚDE REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-menor_de_idade",
+          "category": "menor",
+          "severity": "high",
+          "field": "menor_de_idade",
+          "maskedMatch": "***"
+        },
+        {
+          "ruleId": "FIELD-responsavel",
+          "category": "menor",
+          "severity": "high",
+          "field": "responsavel",
+          "maskedMatch": "***"
+        }
+      ]
+    },
+    {
+      "sink": "http_response",
+      "authenticated": true,
+      "action": "masked",
+      "blocked": false,
+      "allowed": false,
+      "sanitizedPreview": "{\"nome\":\"[NOME REMOVIDO]\",\"cpf\":\"[DOCUMENTO REMOVIDO]\",\"email\":\"[CONTATO REMOVIDO]\",\"telefone\":\"[CONTATO REMOVIDO]\",\"cep\":\"[ENDEREÇO REMOVIDO]\",\"endereco_logradouro\":\"[ENDEREÇO REMOVIDO]\",\"endereco_numero\":\"[ENDEREÇO REMOVIDO]\",\"endereco_bairro\":\"[ENDEREÇO REMOVIDO]\",\"endereco_ci",
+      "findings": [
+        {
+          "ruleId": "FIELD-nome",
+          "category": "identificacao",
+          "severity": "medium",
+          "field": "nome",
+          "maskedMatch": "[NOME REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-cpf",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "[DOCUMENTO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CPF",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "***.***.***-**"
+        },
+        {
+          "ruleId": "FIELD-email",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-EMAIL",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "***@***.***"
+        },
+        {
+          "ruleId": "FIELD-telefone",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-PHONE",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "(**) *****-****"
+        },
+        {
+          "ruleId": "FIELD-cep",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CEP",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "*****-***"
+        },
+        {
+          "ruleId": "FIELD-endereco_logradouro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-ADDRESS",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_numero",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_numero",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_bairro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_bairro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_cidade",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_cidade",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_uf",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_uf",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-senha",
+          "category": "credencial",
+          "severity": "critical",
+          "field": "senha",
+          "maskedMatch": "********"
+        },
+        {
+          "ruleId": "FIELD-comentario",
+          "category": "outro",
+          "severity": "low",
+          "field": "comentario",
+          "maskedMatch": "[TEXTO LIVRE]"
+        },
+        {
+          "ruleId": "PII-HEALTH",
+          "category": "saude",
+          "severity": "high",
+          "field": "comentario",
+          "maskedMatch": "[DADO DE SAÚDE REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-menor_de_idade",
+          "category": "menor",
+          "severity": "high",
+          "field": "menor_de_idade",
+          "maskedMatch": "***"
+        },
+        {
+          "ruleId": "FIELD-responsavel",
+          "category": "menor",
+          "severity": "high",
+          "field": "responsavel",
+          "maskedMatch": "***"
+        }
+      ]
+    },
+    {
+      "sink": "llm_prompt",
+      "authenticated": false,
+      "action": "blocked",
+      "blocked": true,
+      "allowed": false,
+      "sanitizedPreview": "{\"nome\":\"[NOME REMOVIDO]\",\"cpf\":\"[DOCUMENTO REMOVIDO]\",\"email\":\"[CONTATO REMOVIDO]\",\"telefone\":\"[CONTATO REMOVIDO]\",\"cep\":\"[ENDEREÇO REMOVIDO]\",\"endereco_logradouro\":\"[ENDEREÇO REMOVIDO]\",\"endereco_numero\":\"[ENDEREÇO REMOVIDO]\",\"endereco_bairro\":\"[ENDEREÇO REMOVIDO]\",\"endereco_ci",
+      "findings": [
+        {
+          "ruleId": "FIELD-nome",
+          "category": "identificacao",
+          "severity": "medium",
+          "field": "nome",
+          "maskedMatch": "[NOME REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-cpf",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "[DOCUMENTO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CPF",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "***.***.***-**"
+        },
+        {
+          "ruleId": "FIELD-email",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-EMAIL",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "***@***.***"
+        },
+        {
+          "ruleId": "FIELD-telefone",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-PHONE",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "(**) *****-****"
+        },
+        {
+          "ruleId": "FIELD-cep",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CEP",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "*****-***"
+        },
+        {
+          "ruleId": "FIELD-endereco_logradouro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-ADDRESS",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_numero",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_numero",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_bairro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_bairro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_cidade",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_cidade",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_uf",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_uf",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-senha",
+          "category": "credencial",
+          "severity": "critical",
+          "field": "senha",
+          "maskedMatch": "********"
+        },
+        {
+          "ruleId": "FIELD-comentario",
+          "category": "outro",
+          "severity": "low",
+          "field": "comentario",
+          "maskedMatch": "[TEXTO LIVRE]"
+        },
+        {
+          "ruleId": "PII-HEALTH",
+          "category": "saude",
+          "severity": "high",
+          "field": "comentario",
+          "maskedMatch": "[DADO DE SAÚDE REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-menor_de_idade",
+          "category": "menor",
+          "severity": "high",
+          "field": "menor_de_idade",
+          "maskedMatch": "***"
+        },
+        {
+          "ruleId": "FIELD-responsavel",
+          "category": "menor",
+          "severity": "high",
+          "field": "responsavel",
+          "maskedMatch": "***"
+        }
+      ]
+    },
+    {
+      "sink": "database",
+      "authenticated": false,
+      "action": "encrypted",
+      "blocked": false,
+      "allowed": false,
+      "sanitizedPreview": "\"[ENCRYPTED]\"",
+      "findings": [
+        {
+          "ruleId": "FIELD-nome",
+          "category": "identificacao",
+          "severity": "medium",
+          "field": "nome",
+          "maskedMatch": "[NOME REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-cpf",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "[DOCUMENTO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CPF",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "***.***.***-**"
+        },
+        {
+          "ruleId": "FIELD-email",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-EMAIL",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "***@***.***"
+        },
+        {
+          "ruleId": "FIELD-telefone",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-PHONE",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "(**) *****-****"
+        },
+        {
+          "ruleId": "FIELD-cep",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CEP",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "*****-***"
+        },
+        {
+          "ruleId": "FIELD-endereco_logradouro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-ADDRESS",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_numero",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_numero",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_bairro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_bairro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_cidade",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_cidade",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_uf",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_uf",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-senha",
+          "category": "credencial",
+          "severity": "critical",
+          "field": "senha",
+          "maskedMatch": "********"
+        },
+        {
+          "ruleId": "FIELD-comentario",
+          "category": "outro",
+          "severity": "low",
+          "field": "comentario",
+          "maskedMatch": "[TEXTO LIVRE]"
+        },
+        {
+          "ruleId": "PII-HEALTH",
+          "category": "saude",
+          "severity": "high",
+          "field": "comentario",
+          "maskedMatch": "[DADO DE SAÚDE REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-menor_de_idade",
+          "category": "menor",
+          "severity": "high",
+          "field": "menor_de_idade",
+          "maskedMatch": "***"
+        },
+        {
+          "ruleId": "FIELD-responsavel",
+          "category": "menor",
+          "severity": "high",
+          "field": "responsavel",
+          "maskedMatch": "***"
+        }
+      ]
+    },
+    {
+      "sink": "export",
+      "authenticated": false,
+      "action": "blocked",
+      "blocked": true,
+      "allowed": false,
+      "sanitizedPreview": "{\"nome\":\"[NOME REMOVIDO]\",\"cpf\":\"[DOCUMENTO REMOVIDO]\",\"email\":\"[CONTATO REMOVIDO]\",\"telefone\":\"[CONTATO REMOVIDO]\",\"cep\":\"[ENDEREÇO REMOVIDO]\",\"endereco_logradouro\":\"[ENDEREÇO REMOVIDO]\",\"endereco_numero\":\"[ENDEREÇO REMOVIDO]\",\"endereco_bairro\":\"[ENDEREÇO REMOVIDO]\",\"endereco_ci",
+      "findings": [
+        {
+          "ruleId": "FIELD-nome",
+          "category": "identificacao",
+          "severity": "medium",
+          "field": "nome",
+          "maskedMatch": "[NOME REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-cpf",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "[DOCUMENTO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CPF",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "***.***.***-**"
+        },
+        {
+          "ruleId": "FIELD-email",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-EMAIL",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "***@***.***"
+        },
+        {
+          "ruleId": "FIELD-telefone",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-PHONE",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "(**) *****-****"
+        },
+        {
+          "ruleId": "FIELD-cep",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CEP",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "*****-***"
+        },
+        {
+          "ruleId": "FIELD-endereco_logradouro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-ADDRESS",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_numero",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_numero",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_bairro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_bairro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_cidade",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_cidade",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_uf",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_uf",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-senha",
+          "category": "credencial",
+          "severity": "critical",
+          "field": "senha",
+          "maskedMatch": "********"
+        },
+        {
+          "ruleId": "FIELD-comentario",
+          "category": "outro",
+          "severity": "low",
+          "field": "comentario",
+          "maskedMatch": "[TEXTO LIVRE]"
+        },
+        {
+          "ruleId": "PII-HEALTH",
+          "category": "saude",
+          "severity": "high",
+          "field": "comentario",
+          "maskedMatch": "[DADO DE SAÚDE REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-menor_de_idade",
+          "category": "menor",
+          "severity": "high",
+          "field": "menor_de_idade",
+          "maskedMatch": "***"
+        },
+        {
+          "ruleId": "FIELD-responsavel",
+          "category": "menor",
+          "severity": "high",
+          "field": "responsavel",
+          "maskedMatch": "***"
+        }
+      ]
+    },
+    {
+      "sink": "error_screen",
+      "authenticated": false,
+      "action": "blocked",
+      "blocked": true,
+      "allowed": false,
+      "sanitizedPreview": "{\"nome\":\"[NOME REMOVIDO]\",\"cpf\":\"[DOCUMENTO REMOVIDO]\",\"email\":\"[CONTATO REMOVIDO]\",\"telefone\":\"[CONTATO REMOVIDO]\",\"cep\":\"[ENDEREÇO REMOVIDO]\",\"endereco_logradouro\":\"[ENDEREÇO REMOVIDO]\",\"endereco_numero\":\"[ENDEREÇO REMOVIDO]\",\"endereco_bairro\":\"[ENDEREÇO REMOVIDO]\",\"endereco_ci",
+      "findings": [
+        {
+          "ruleId": "FIELD-nome",
+          "category": "identificacao",
+          "severity": "medium",
+          "field": "nome",
+          "maskedMatch": "[NOME REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-cpf",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "[DOCUMENTO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CPF",
+          "category": "identificacao",
+          "severity": "high",
+          "field": "cpf",
+          "maskedMatch": "***.***.***-**"
+        },
+        {
+          "ruleId": "FIELD-email",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-EMAIL",
+          "category": "contato",
+          "severity": "medium",
+          "field": "email",
+          "maskedMatch": "***@***.***"
+        },
+        {
+          "ruleId": "FIELD-telefone",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "[CONTATO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-PHONE",
+          "category": "contato",
+          "severity": "medium",
+          "field": "telefone",
+          "maskedMatch": "(**) *****-****"
+        },
+        {
+          "ruleId": "FIELD-cep",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-CEP",
+          "category": "endereco",
+          "severity": "low",
+          "field": "cep",
+          "maskedMatch": "*****-***"
+        },
+        {
+          "ruleId": "FIELD-endereco_logradouro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "PII-ADDRESS",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_logradouro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_numero",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_numero",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_bairro",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_bairro",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_cidade",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_cidade",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-endereco_uf",
+          "category": "endereco",
+          "severity": "medium",
+          "field": "endereco_uf",
+          "maskedMatch": "[ENDEREÇO REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-senha",
+          "category": "credencial",
+          "severity": "critical",
+          "field": "senha",
+          "maskedMatch": "********"
+        },
+        {
+          "ruleId": "FIELD-comentario",
+          "category": "outro",
+          "severity": "low",
+          "field": "comentario",
+          "maskedMatch": "[TEXTO LIVRE]"
+        },
+        {
+          "ruleId": "PII-HEALTH",
+          "category": "saude",
+          "severity": "high",
+          "field": "comentario",
+          "maskedMatch": "[DADO DE SAÚDE REMOVIDO]"
+        },
+        {
+          "ruleId": "FIELD-menor_de_idade",
+          "category": "menor",
+          "severity": "high",
+          "field": "menor_de_idade",
+          "maskedMatch": "***"
+        },
+        {
+          "ruleId": "FIELD-responsavel",
+          "category": "menor",
+          "severity": "high",
+          "field": "responsavel",
+          "maskedMatch": "***"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "evt_mwf2q1oo_4y2suikv",
+      "timestamp": "2026-11-13T14:30:11.976Z",
+      "source": "form",
+      "sink": "console",
+      "action": "blocked",
+      "category": "identificacao",
+      "severity": "critical",
+      "ruleIds": [
+        "FIELD-nome",
+        "FIELD-cpf",
+        "PII-CPF",
+        "FIELD-email",
+        "PII-EMAIL",
+        "FIELD-telefone",
+        "PII-PHONE",
+        "FIELD-cep",
+        "PII-CEP",
+        "FIELD-endereco_logradouro",
+        "PII-ADDRESS",
+        "FIELD-endereco_numero",
+        "FIELD-endereco_bairro",
+        "FIELD-endereco_cidade",
+        "FIELD-endereco_uf",
+        "FIELD-senha",
+        "FIELD-comentario",
+        "PII-HEALTH",
+        "FIELD-menor_de_idade",
+        "FIELD-responsavel"
+      ],
+      "message": "PII blocked antes de console.",
+      "maskedValue": "[NOME REMOVIDO]",
+      "metadata": {
+        "field": "nome",
+        "authenticated": false,
+        "categories": [
+          "identificacao",
+          "contato",
+          "endereco",
+          "credencial",
+          "outro",
+          "saude",
+          "menor"
+        ]
+      }
+    },
+    {
+      "id": "evt_mwf2q1oo_14wuu2mn",
+      "timestamp": "2026-11-13T14:30:11.976Z",
+      "source": "form",
+      "sink": "log",
+      "action": "blocked",
+      "category": "identificacao",
+      "severity": "critical",
+      "ruleIds": [
+        "FIELD-nome",
+        "FIELD-cpf",
+        "PII-CPF",
+        "FIELD-email",
+        "PII-EMAIL",
+        "FIELD-telefone",
+        "PII-PHONE",
+        "FIELD-cep",
+        "PII-CEP",
+        "FIELD-endereco_logradouro",
+        "PII-ADDRESS",
+        "FIELD-endereco_numero",
+        "FIELD-endereco_bairro",
+        "FIELD-endereco_cidade",
+        "FIELD-endereco_uf",
+        "FIELD-senha",
+        "FIELD-comentario",
+        "PII-HEALTH",
+        "FIELD-menor_de_idade",
+        "FIELD-responsavel"
+      ],
+      "message": "PII blocked antes de log.",
+      "maskedValue": "[NOME REMOVIDO]",
+      "metadata": {
+        "field": "nome",
+        "authenticated": false,
+        "categories": [
+          "identificacao",
+          "contato",
+          "endereco",
+          "credencial",
+          "outro",
+          "saude",
+          "menor"
+        ]
+      }
+    },
+    {
+      "id": "evt_mwf2q1oo_1d3bzj5x",
+      "timestamp": "2026-11-13T14:30:11.976Z",
+      "source": "form",
+      "sink": "http_response",
+      "action": "blocked",
+      "category": "identificacao",
+      "severity": "critical",
+      "ruleIds": [
+        "FIELD-nome",
+        "FIELD-cpf",
+        "PII-CPF",
+        "FIELD-email",
+        "PII-EMAIL",
+        "FIELD-telefone",
+        "PII-PHONE",
+        "FIELD-cep",
+        "PII-CEP",
+        "FIELD-endereco_logradouro",
+        "PII-ADDRESS",
+        "FIELD-endereco_numero",
+        "FIELD-endereco_bairro",
+        "FIELD-endereco_cidade",
+        "FIELD-endereco_uf",
+        "FIELD-senha",
+        "FIELD-comentario",
+        "PII-HEALTH",
+        "FIELD-menor_de_idade",
+        "FIELD-responsavel"
+      ],
+      "message": "PII blocked antes de http_response.",
+      "maskedValue": "[NOME REMOVIDO]",
+      "metadata": {
+        "field": "nome",
+        "authenticated": false,
+        "categories": [
+          "identificacao",
+          "contato",
+          "endereco",
+          "credencial",
+          "outro",
+          "saude",
+          "menor"
+        ]
+      }
+    },
+    {
+      "id": "evt_mwf2q1op_edkru619",
+      "timestamp": "2026-11-13T14:30:11.977Z",
+      "source": "form",
+      "sink": "http_response",
+      "action": "masked",
+      "category": "identificacao",
+      "severity": "critical",
+      "ruleIds": [
+        "FIELD-nome",
+        "FIELD-cpf",
+        "PII-CPF",
+        "FIELD-email",
+        "PII-EMAIL",
+        "FIELD-telefone",
+        "PII-PHONE",
+        "FIELD-cep",
+        "PII-CEP",
+        "FIELD-endereco_logradouro",
+        "PII-ADDRESS",
+        "FIELD-endereco_numero",
+        "FIELD-endereco_bairro",
+        "FIELD-endereco_cidade",
+        "FIELD-endereco_uf",
+        "FIELD-senha",
+        "FIELD-comentario",
+        "PII-HEALTH",
+        "FIELD-menor_de_idade",
+        "FIELD-responsavel"
+      ],
+      "message": "PII masked antes de http_response.",
+      "maskedValue": "[NOME REMOVIDO]",
+      "metadata": {
+        "field": "nome",
+        "authenticated": true,
+        "categories": [
+          "identificacao",
+          "contato",
+          "endereco",
+          "credencial",
+          "outro",
+          "saude",
+          "menor"
+        ]
+      }
+    },
+    {
+      "id": "evt_mwf2q1op_mi16lyu9",
+      "timestamp": "2026-11-13T14:30:11.977Z",
+      "source": "form",
+      "sink": "llm_prompt",
+      "action": "blocked",
+      "category": "identificacao",
+      "severity": "critical",
+      "ruleIds": [
+        "FIELD-nome",
+        "FIELD-cpf",
+        "PII-CPF",
+        "FIELD-email",
+        "PII-EMAIL",
+        "FIELD-telefone",
+        "PII-PHONE",
+        "FIELD-cep",
+        "PII-CEP",
+        "FIELD-endereco_logradouro",
+        "PII-ADDRESS",
+        "FIELD-endereco_numero",
+        "FIELD-endereco_bairro",
+        "FIELD-endereco_cidade",
+        "FIELD-endereco_uf",
+        "FIELD-senha",
+        "FIELD-comentario",
+        "PII-HEALTH",
+        "FIELD-menor_de_idade",
+        "FIELD-responsavel"
+      ],
+      "message": "PII blocked antes de llm_prompt.",
+      "maskedValue": "[NOME REMOVIDO]",
+      "metadata": {
+        "field": "nome",
+        "authenticated": false,
+        "categories": [
+          "identificacao",
+          "contato",
+          "endereco",
+          "credencial",
+          "outro",
+          "saude",
+          "menor"
+        ]
+      }
+    },
+    {
+      "id": "evt_mwf2q1oq_uh2zgllb",
+      "timestamp": "2026-11-13T14:30:11.978Z",
+      "source": "form",
+      "sink": "database",
+      "action": "encrypted",
+      "category": "identificacao",
+      "severity": "critical",
+      "ruleIds": [
+        "FIELD-nome",
+        "FIELD-cpf",
+        "PII-CPF",
+        "FIELD-email",
+        "PII-EMAIL",
+        "FIELD-telefone",
+        "PII-PHONE",
+        "FIELD-cep",
+        "PII-CEP",
+        "FIELD-endereco_logradouro",
+        "PII-ADDRESS",
+        "FIELD-endereco_numero",
+        "FIELD-endereco_bairro",
+        "FIELD-endereco_cidade",
+        "FIELD-endereco_uf",
+        "FIELD-senha",
+        "FIELD-comentario",
+        "PII-HEALTH",
+        "FIELD-menor_de_idade",
+        "FIELD-responsavel"
+      ],
+      "message": "PII encrypted antes de database.",
+      "maskedValue": "[NOME REMOVIDO]",
+      "metadata": {
+        "field": "nome",
+        "authenticated": false,
+        "categories": [
+          "identificacao",
+          "contato",
+          "endereco",
+          "credencial",
+          "outro",
+          "saude",
+          "menor"
+        ]
+      }
+    },
+    {
+      "id": "evt_mwf2q1oq_ze26tzzm",
+      "timestamp": "2026-11-13T14:30:11.978Z",
+      "source": "form",
+      "sink": "export",
+      "action": "blocked",
+      "category": "identificacao",
+      "severity": "critical",
+      "ruleIds": [
+        "FIELD-nome",
+        "FIELD-cpf",
+        "PII-CPF",
+        "FIELD-email",
+        "PII-EMAIL",
+        "FIELD-telefone",
+        "PII-PHONE",
+        "FIELD-cep",
+        "PII-CEP",
+        "FIELD-endereco_logradouro",
+        "PII-ADDRESS",
+        "FIELD-endereco_numero",
+        "FIELD-endereco_bairro",
+        "FIELD-endereco_cidade",
+        "FIELD-endereco_uf",
+        "FIELD-senha",
+        "FIELD-comentario",
+        "PII-HEALTH",
+        "FIELD-menor_de_idade",
+        "FIELD-responsavel"
+      ],
+      "message": "PII blocked antes de export.",
+      "maskedValue": "[NOME REMOVIDO]",
+      "metadata": {
+        "field": "nome",
+        "authenticated": false,
+        "categories": [
+          "identificacao",
+          "contato",
+          "endereco",
+          "credencial",
+          "outro",
+          "saude",
+          "menor"
+        ]
+      }
+    },
+    {
+      "id": "evt_mwf2q1oq_8pnwwzbv",
+      "timestamp": "2026-11-13T14:30:11.978Z",
+      "source": "form",
+      "sink": "error_screen",
+      "action": "blocked",
+      "category": "identificacao",
+      "severity": "critical",
+      "ruleIds": [
+        "FIELD-nome",
+        "FIELD-cpf",
+        "PII-CPF",
+        "FIELD-email",
+        "PII-EMAIL",
+        "FIELD-telefone",
+        "PII-PHONE",
+        "FIELD-cep",
+        "PII-CEP",
+        "FIELD-endereco_logradouro",
+        "PII-ADDRESS",
+        "FIELD-endereco_numero",
+        "FIELD-endereco_bairro",
+        "FIELD-endereco_cidade",
+        "FIELD-endereco_uf",
+        "FIELD-senha",
+        "FIELD-comentario",
+        "PII-HEALTH",
+        "FIELD-menor_de_idade",
+        "FIELD-responsavel"
+      ],
+      "message": "PII blocked antes de error_screen.",
+      "maskedValue": "[NOME REMOVIDO]",
+      "metadata": {
+        "field": "nome",
+        "authenticated": false,
+        "categories": [
+          "identificacao",
+          "contato",
+          "endereco",
+          "credencial",
+          "outro",
+          "saude",
+          "menor"
+        ]
+      }
+    }
+  ],
+  "risk": {
+    "score": 60,
+    "attemptedScore": 100,
+    "level": "alto",
+    "label": "Risco alto",
+    "total": 8,
+    "blocked": 6,
+    "masked": 1,
+    "encrypted": 1,
+    "allowed": 0,
+    "bySeverity": {
+      "low": 0,
+      "medium": 0,
+      "high": 0,
+      "critical": 8
+    },
+    "byCategory": {
+      "identificacao": 8,
+      "contato": 0,
+      "endereco": 0,
+      "credencial": 0,
+      "saude": 0,
+      "menor": 0,
+      "financeiro": 0,
+      "outro": 0
+    },
+    "generatedAt": "2026-11-13T14:30:11.978Z"
+  },
+  "privacy": {
+    "rawPiiExposed": false,
+    "note": "Todos os traces usam valores mascarados ou criptografados."
+  }
+}

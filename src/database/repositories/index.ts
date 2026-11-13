@@ -62,6 +62,7 @@ export async function getOrderHistory(db:SQLiteDatabase,orderId:number):Promise<
  return await db.getAllAsync<OrderHistory>(`SELECT h.* FROM historico_pedidos h JOIN pedidos p ON p.id=h.pedido_id WHERE h.pedido_id=? AND p.jovem_id=? ORDER BY h.atualizado_em`,orderId,JOVEM);
 }
 export async function confirmOrder(db:SQLiteDatabase,address:Address):Promise<number>{
+ if(!(await hasConsent(db)))throw new Error('É necessário aceitar o termo de consentimento antes de continuar.');
  let createdId=0;
  const required=[address.cep,address.logradouro,address.numero,address.bairro,address.cidade,address.uf,address.contato];
  if(required.some(x=>!x.trim()))throw new Error('Preencha todos os campos obrigatórios de endereço e contato.');
@@ -85,6 +86,7 @@ export async function confirmOrder(db:SQLiteDatabase,address:Address):Promise<nu
  return createdId;
 }
 export async function saveFeedback(db:SQLiteDatabase,orderId:number,answers:FeedbackAnswers,participated:boolean,comment:string):Promise<void>{
+ if(!(await hasConsent(db)))throw new Error('É necessário aceitar o termo de consentimento antes de continuar.');
  await db.withTransactionAsync(async()=>{
   const order=await getOrder(db,orderId);
   if(!order||order.status!=='entregue')throw new Error('O feedback só é permitido para pedidos entregues.');

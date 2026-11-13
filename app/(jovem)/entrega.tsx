@@ -4,6 +4,8 @@ import {useRouter} from 'expo-router';
 import {useSQLiteContext} from 'expo-sqlite';
 import {useAuth} from '../../src/context/AuthContext';
 import {getSelection,confirmOrder} from '../../src/database/repositories';
+import {safeErrorMessage} from '../../src/security';
+import {reportSecurityEvent,scanLocal} from '../../src/services/securityService';
 import type{Address} from '../../src/types/models';
 import {colors,spacing,typography,radius} from '../../src/constants/theme';
 import {AppScreen,PageHeader,Heading,SmallHeading,BodyText,FormInput,Button,IconView,InfoNotice,StateView} from '../../src/components/Design';
@@ -14,7 +16,27 @@ export default function Delivery(){
  const [editable,setEditable]=useState(false),[busy,setBusy]=useState(false),[qty,setQty]=useState<number|null>(null);
  useEffect(()=>{getSelection(db).then(items=>setQty(items.length)).catch(()=>setQty(0))},[db]);
  const update=(key:keyof Address,value:string)=>setAddress(old=>({...old,[key]:value}));
- const submit=async()=>{try{setBusy(true);const id=await confirmOrder(db,address);await refreshProfile();Alert.alert('Pedido enviado!',`Sua solicitação #${id} foi registrada. As peças foram reservadas e o pedido começa como Solicitado.`,[{text:'Ir para início',onPress:()=>r.replace('/(jovem)/inicio')},{text:'Acompanhar',onPress:()=>r.replace({pathname:'/(jovem)/acompanhar',params:{id:String(id)}})}])}catch(e){Alert.alert('Não foi possível enviar',e instanceof Error?e.message:'Tente novamente. Revise a seleção na tela Meu pedido.')}finally{setBusy(false)}};
+ const submit=async()=>{
+  const scan=scanLocal(address);
+  const sensitive=scan.findings.filter(f=>['credencial','saude','menor'].includes(f.category));
+  if(sensitive.length){
+   const first=sensitive[0];
+   void reportSecurityEvent({source:'form',sink:'error_screen',action:'blocked',category:first.category,severity:first.severity,ruleIds:Array.from(new Set(sensitive.map(f=>f.ruleId))),message:'Envio de pedido bloqueado no app por conter dado sensível.',maskedValue:first.maskedMatch});
+   Alert.alert('Dados sensíveis detectados','Remova senhas, dados de saúde ou informações de menor de idade do endereço antes de enviar.');
+   return;
+  }
+  try{
+   setBusy(true);
+   const id=await confirmOrder(db,address);
+   void reportSecurityEvent({source:'form',sink:'database',action:'encrypted',category:'endereco',severity:'medium',ruleIds:['FIELD-endereco'],message:'Pedido confirmado com endereço e contato protegidos.',maskedValue:'[ENDEREÇO REMOVIDO]'});
+   await refreshProfile();
+   Alert.alert('Pedido enviado!',`Sua solicitação #${id} foi registrada. As peças foram reservadas e o pedido começa como Solicitado.`,[{text:'Ir para início',onPress:()=>r.replace('/(jovem)/inicio')},{text:'Acompanhar',onPress:()=>r.replace({pathname:'/(jovem)/acompanhar',params:{id:String(id)}})}]);
+  }catch(e){
+   Alert.alert('Não foi possível enviar',safeErrorMessage(e,'Não foi possível enviar. Revise a seleção na tela Meu pedido.'));
+  }finally{
+   setBusy(false);
+  }
+ };
  const block=(title:string,icon:any,lines:string[],onPress:()=>void)=><View style={{backgroundColor:colors.lilacLight,borderRadius:20,padding:14,marginBottom:12,flexDirection:'row',gap:10,alignItems:'center'}}><IconView name={icon} size={25}/><View style={{flex:1}}><SmallHeading style={{fontSize:16}}>{title}</SmallHeading>{lines.map((x,i)=><BodyText key={i} style={{fontSize:13}}>{x}</BodyText>)}</View><Pressable accessibilityRole="button" accessibilityLabel={`Editar ${title}`} onPress={onPress} style={{padding:5}}><IconView name="create-outline" size={20}/><BodyText style={{fontSize:11,color:colors.purple}}>Editar</BodyText></Pressable></View>;
  return <AppScreen active="pedidos"><PageHeader title="Endereço e janela de entrega" subtitle="Confira seus dados antes de enviar o pedido."/>
  <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',marginBottom:20,gap:15}}><View style={{alignItems:'center'}}><IconView name="checkmark-circle" size={29}/><BodyText style={{fontSize:12}}>Meu pedido</BodyText></View><View style={{height:2,width:50,backgroundColor:colors.purple}}/><View style={{alignItems:'center'}}><IconView name="location" size={29}/><BodyText style={{fontSize:12,fontFamily:typography.semibold}}>Confirmar entrega</BodyText></View></View>

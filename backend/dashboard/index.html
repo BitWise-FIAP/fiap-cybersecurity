@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>TRAJEtória · Segurança e Risco Cidadão</title>
+    <link rel="stylesheet" href="/dashboard/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Global Solution 2026.2 · Cybersecurity</p>
+          <h1>TRAJEtória <span>· Risco Cidadão</span></h1>
+          <p class="subtitle">
+            Parsing de PII, Taint Analysis e tradução de eventos de segurança
+            para linguagem humana.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <button id="refresh" class="btn btn-ghost" type="button">Atualizar</button>
+          <a class="btn btn-ghost" href="/api/security/report" target="_blank" rel="noreferrer">
+            Relatório de auditoria
+          </a>
+        </div>
+      </header>
+
+      <div id="status" class="status" role="status">Carregando painel de segurança...</div>
+
+      <main class="grid">
+        <section class="card risk-card">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">Risco residual</p>
+              <h2 id="risk-label">—</h2>
+            </div>
+            <div id="risk-light" class="traffic" aria-hidden="true">
+              <span class="dot green"></span>
+              <span class="dot yellow"></span>
+              <span class="dot red"></span>
+            </div>
+          </div>
+          <div class="score-row">
+            <div id="risk-score" class="score">—</div>
+            <div class="score-meta">
+              <p>Score residual: <strong id="risk-score-label">—</strong></p>
+              <p>Risco tentado: <strong id="risk-attempted">—</strong></p>
+              <p id="risk-counts">—</p>
+            </div>
+          </div>
+          <div class="traffic-labels">
+            <span>Baixo</span><span>Moderado</span><span>Alto</span><span>Crítico</span>
+          </div>
+        </section>
+
+        <section class="card ai-card">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">IA · tradução do evento</p>
+              <h2>O que aconteceu?</h2>
+            </div>
+            <span id="ai-provider" class="badge">—</span>
+          </div>
+          <p id="ai-message" class="ai-message">
+            Nenhum evento analisado ainda. Use os botões de simulação para gerar
+            evidências.
+          </p>
+          <p id="ai-meta" class="muted">Modelo: —</p>
+        </section>
+
+        <section class="card metrics-card">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">Eventos tratados</p>
+              <h2>Métricas</h2>
+            </div>
+          </div>
+          <div class="metrics">
+            <div class="metric"><span id="metric-total">0</span><label>Total</label></div>
+            <div class="metric blocked"><span id="metric-blocked">0</span><label>Bloqueados</label></div>
+            <div class="metric masked"><span id="metric-masked">0</span><label>Mascarados</label></div>
+            <div class="metric encrypted"><span id="metric-encrypted">0</span><label>Criptografados</label></div>
+            <div class="metric allowed"><span id="metric-allowed">0</span><label>Permitidos</label></div>
+          </div>
+        </section>
+
+        <section class="card categories-card">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">PII mapeada</p>
+              <h2>Categorias</h2>
+            </div>
+          </div>
+          <div id="categories" class="categories"></div>
+        </section>
+
+        <section class="card events-card">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">Auditoria</p>
+              <h2>Eventos recentes</h2>
+            </div>
+            <span class="muted">Valores sempre mascarados</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Quando</th>
+                  <th>Origem</th>
+                  <th>Categoria</th>
+                  <th>Severidade</th>
+                  <th>Ação</th>
+                  <th>Sink</th>
+                  <th>Valor mascarado</th>
+                  <th>Risco</th>
+                </tr>
+              </thead>
+              <tbody id="events-body">
+                <tr><td colspan="8" class="empty">Nenhum evento registrado.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card demo-card">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">Demonstração</p>
+              <h2>Simular fluxos</h2>
+            </div>
+          </div>
+          <p class="muted">
+            Os dados são fictícios. O backend aplica parsing de PII, bloqueia
+            vazamentos em logs e respostas públicas, criptografa antes de
+            armazenar e envia apenas o evento sanitizado para a IA.
+          </p>
+          <div class="demo-actions">
+            <button id="demo-leak" class="btn btn-danger" type="button">
+              Simular tentativa de vazamento
+            </button>
+            <button id="demo-safe" class="btn btn-success" type="button">
+              Simular fluxo seguro
+            </button>
+            <button id="demo-mixed" class="btn btn-primary" type="button">
+              Simular cenário completo
+            </button>
+          </div>
+          <p class="privacy">
+            <strong>Privacidade:</strong> nenhuma PII bruta é retornada por este
+            painel. Valores aparecem mascarados ou criptografados.
+          </p>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>TRAJEtória · protótipo acadêmico FIAP</span>
+        <span id="generated-at">—</span>
+      </footer>
+    </div>
+    <script src="/dashboard/app.js"></script>
+  </body>
+</html>

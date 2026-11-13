@@ -1,0 +1,615 @@
+{
+  "generatedAt": "2026-11-13T14:24:54.174Z",
+  "tool": "trajetoria-taint-analysis",
+  "version": "1.0.0",
+  "description": "Análise estática source→sink do app TRAJEtória, backend de segurança e dashboard web.",
+  "summary": {
+    "filesScanned": 41,
+    "sourceFiles": 15,
+    "sourceOccurrences": 48,
+    "sinkGroups": 37,
+    "sinkOccurrences": 103,
+    "guarded": 20,
+    "acceptedRisk": 17,
+    "unprotected": 0,
+    "residualRisk": "moderado"
+  },
+  "findings": [
+    {
+      "file": "app/(jovem)/acompanhar.tsx",
+      "sink": "Alert.alert",
+      "lines": [
+        12,
+        21
+      ],
+      "occurrences": 2,
+      "status": "accepted_risk",
+      "guard": "mensagens estáticas",
+      "note": "Alertas exibem apenas textos fixos de interface, sem PII ou erro bruto.",
+      "sourceHints": []
+    },
+    {
+      "file": "app/(jovem)/catalogo.tsx",
+      "sink": "Alert.alert",
+      "lines": [
+        21
+      ],
+      "occurrences": 1,
+      "status": "guarded",
+      "guard": "safeErrorMessage",
+      "note": "Alertas usam mensagens estáticas ou safeErrorMessage; nenhum erro bruto do banco é exibido.",
+      "sourceHints": [
+        "young",
+        "nome"
+      ]
+    },
+    {
+      "file": "app/(jovem)/detalhe/[id].tsx",
+      "sink": "Alert.alert",
+      "lines": [
+        15
+      ],
+      "occurrences": 1,
+      "status": "guarded",
+      "guard": "safeErrorMessage",
+      "note": "Alerta de adição usa safeErrorMessage; nenhum erro bruto do banco é exibido.",
+      "sourceHints": [
+        "nome"
+      ]
+    },
+    {
+      "file": "app/(jovem)/entrega.tsx",
+      "sink": "reportSecurityEvent",
+      "lines": [
+        24,
+        31
+      ],
+      "occurrences": 2,
+      "status": "guarded",
+      "guard": "scanLocal + hasConsent + safeErrorMessage",
+      "note": "Formulário bloqueia categorias sensíveis, exige consentimento no repositório e nunca exibe erro bruto.",
+      "sourceHints": [
+        "address",
+        "saude",
+        "menor",
+        "saúde",
+        "endereço"
+      ]
+    },
+    {
+      "file": "app/(jovem)/entrega.tsx",
+      "sink": "Alert.alert",
+      "lines": [
+        25,
+        33,
+        35
+      ],
+      "occurrences": 3,
+      "status": "guarded",
+      "guard": "scanLocal + hasConsent + safeErrorMessage",
+      "note": "Formulário bloqueia categorias sensíveis, exige consentimento no repositório e nunca exibe erro bruto.",
+      "sourceHints": [
+        "address",
+        "saude",
+        "menor",
+        "saúde",
+        "endereço",
+        "endereco",
+        "contato"
+      ]
+    },
+    {
+      "file": "app/(jovem)/entrega.tsx",
+      "sink": "confirmOrder",
+      "lines": [
+        30
+      ],
+      "occurrences": 1,
+      "status": "guarded",
+      "guard": "scanLocal + hasConsent + safeErrorMessage",
+      "note": "Formulário bloqueia categorias sensíveis, exige consentimento no repositório e nunca exibe erro bruto.",
+      "sourceHints": [
+        "saúde",
+        "menor",
+        "endereço",
+        "address",
+        "endereco",
+        "contato"
+      ]
+    },
+    {
+      "file": "app/(jovem)/feedback.tsx",
+      "sink": "Alert.alert",
+      "lines": [
+        16,
+        30,
+        32
+      ],
+      "occurrences": 3,
+      "status": "guarded",
+      "guard": "sanitizeFreeText + hasConsent + safeErrorMessage",
+      "note": "Comentário é sanitizado antes de persistir, consentimento é exigido e erros são traduzidos para mensagens seguras.",
+      "sourceHints": [
+        "comment"
+      ]
+    },
+    {
+      "file": "app/(jovem)/feedback.tsx",
+      "sink": "reportSecurityEvent",
+      "lines": [
+        22,
+        29
+      ],
+      "occurrences": 2,
+      "status": "guarded",
+      "guard": "sanitizeFreeText + hasConsent + safeErrorMessage",
+      "note": "Comentário é sanitizado antes de persistir, consentimento é exigido e erros são traduzidos para mensagens seguras.",
+      "sourceHints": [
+        "comment"
+      ]
+    },
+    {
+      "file": "app/(jovem)/feedback.tsx",
+      "sink": "saveFeedback",
+      "lines": [
+        28
+      ],
+      "occurrences": 1,
+      "status": "guarded",
+      "guard": "sanitizeFreeText + hasConsent + safeErrorMessage",
+      "note": "Comentário é sanitizado antes de persistir, consentimento é exigido e erros são traduzidos para mensagens seguras.",
+      "sourceHints": []
+    },
+    {
+      "file": "app/(jovem)/meu-pedido.tsx",
+      "sink": "Alert.alert",
+      "lines": [
+        12,
+        14
+      ],
+      "occurrences": 2,
+      "status": "accepted_risk",
+      "guard": "mensagens estáticas + nome da peça",
+      "note": "Alertas exibem textos fixos e nome de peça de catálogo, que não é dado pessoal.",
+      "sourceHints": [
+        "nome"
+      ]
+    },
+    {
+      "file": "app/(jovem)/perfil.tsx",
+      "sink": "Alert.alert",
+      "lines": [
+        15
+      ],
+      "occurrences": 1,
+      "status": "accepted_risk",
+      "guard": "mensagens estáticas",
+      "note": "Alertas exibem apenas textos fixos de confirmação de logout.",
+      "sourceHints": [
+        "nome",
+        "young",
+        "endereço",
+        "contato",
+        "endereco",
+        "logradouro",
+        "numero",
+        "complemento",
+        "bairro",
+        "cidade",
+        "uf",
+        "cep",
+        "telefone"
+      ]
+    },
+    {
+      "file": "app/consentimento.tsx",
+      "sink": "Alert.alert",
+      "lines": [
+        19
+      ],
+      "occurrences": 1,
+      "status": "accepted_risk",
+      "guard": "mensagens estáticas",
+      "note": "Alerta de erro usa texto fixo, sem detalhes internos.",
+      "sourceHints": []
+    },
+    {
+      "file": "app/index.tsx",
+      "sink": "Alert.alert",
+      "lines": [
+        24
+      ],
+      "occurrences": 1,
+      "status": "accepted_risk",
+      "guard": "mensagens estáticas",
+      "note": "Alerta de ajuda exibe apenas texto fixo de demonstração.",
+      "sourceHints": [
+        "senha",
+        "password"
+      ]
+    },
+    {
+      "file": "backend/http/body.ts",
+      "sink": "sendJson",
+      "lines": [
+        12,
+        22
+      ],
+      "occurrences": 2,
+      "status": "guarded",
+      "guard": "limite de body + erro estático",
+      "note": "Validação de payload com limite de tamanho e mensagens de erro sem PII.",
+      "sourceHints": []
+    },
+    {
+      "file": "backend/http/responses.ts",
+      "sink": "sendJson",
+      "lines": [
+        35,
+        76,
+        92,
+        96,
+        100
+      ],
+      "occurrences": 5,
+      "status": "guarded",
+      "guard": "sendJson seguro",
+      "note": "Respostas de erro são estáticas e não incluem payload ou stack trace.",
+      "sourceHints": []
+    },
+    {
+      "file": "backend/http/responses.ts",
+      "sink": "res.end",
+      "lines": [
+        49,
+        60,
+        71,
+        88
+      ],
+      "occurrences": 4,
+      "status": "guarded",
+      "guard": "sendJson seguro",
+      "note": "Respostas de erro são estáticas e não incluem payload ou stack trace.",
+      "sourceHints": []
+    },
+    {
+      "file": "backend/routes/orders.ts",
+      "sink": "sendJson",
+      "lines": [
+        18,
+        32,
+        61,
+        75,
+        83,
+        89,
+        104,
+        113,
+        141
+      ],
+      "occurrences": 9,
+      "status": "guarded",
+      "guard": "protectForOrder + protectForFeedback + publicView",
+      "note": "Pedidos e feedback exigem consentimento, criptografam PII em repouso e devolvem apenas visão pública mascarada.",
+      "sourceHints": []
+    },
+    {
+      "file": "backend/routes/security.ts",
+      "sink": "sendJson",
+      "lines": [
+        63,
+        72,
+        95,
+        112,
+        134,
+        145,
+        154,
+        159,
+        168,
+        170
+      ],
+      "occurrences": 10,
+      "status": "guarded",
+      "guard": "buildDashboardPayload + protectPayload",
+      "note": "Dashboard e scan retornam somente dados mascarados/criptografados; eventos exigem token.",
+      "sourceHints": []
+    },
+    {
+      "file": "backend/security/aiTranslator.ts",
+      "sink": "throw new Error",
+      "lines": [
+        125,
+        130,
+        163,
+        168
+      ],
+      "occurrences": 4,
+      "status": "guarded",
+      "guard": "sanitizedEvent",
+      "note": "O prompt de IA recebe apenas campos sanitizados do evento, nunca PII bruta.",
+      "sourceHints": []
+    },
+    {
+      "file": "backend/security/crypto.ts",
+      "sink": "throw new Error",
+      "lines": [
+        32
+      ],
+      "occurrences": 1,
+      "status": "guarded",
+      "guard": "AES-256-GCM",
+      "note": "Erros de criptografia são genéricos e não expõem payload ou chave.",
+      "sourceHints": []
+    },
+    {
+      "file": "backend/security/piiMiddleware.ts",
+      "sink": "throw new Error",
+      "lines": [
+        83
+      ],
+      "occurrences": 1,
+      "status": "guarded",
+      "guard": "protectForLog/Ai/Response/Order/Feedback",
+      "note": "Middleware central aplica mascaramento, bloqueio ou criptografia conforme o destino.",
+      "sourceHints": []
+    },
+    {
+      "file": "backend/server.ts",
+      "sink": "res.end",
+      "lines": [
+        43,
+        67,
+        113
+      ],
+      "occurrences": 3,
+      "status": "accepted_risk",
+      "guard": "logs estáticos de inicialização",
+      "note": "Logs exibem apenas URLs e provedor de IA; nenhum payload ou PII é registrado.",
+      "sourceHints": []
+    },
+    {
+      "file": "backend/server.ts",
+      "sink": "sendJson",
+      "lines": [
+        56,
+        84,
+        116
+      ],
+      "occurrences": 3,
+      "status": "accepted_risk",
+      "guard": "logs estáticos de inicialização",
+      "note": "Logs exibem apenas URLs e provedor de IA; nenhum payload ou PII é registrado.",
+      "sourceHints": []
+    },
+    {
+      "file": "backend/server.ts",
+      "sink": "console.log",
+      "lines": [
+        129,
+        132,
+        135
+      ],
+      "occurrences": 3,
+      "status": "accepted_risk",
+      "guard": "logs estáticos de inicialização",
+      "note": "Logs exibem apenas URLs e provedor de IA; nenhum payload ou PII é registrado.",
+      "sourceHints": []
+    },
+    {
+      "file": "src/components/Design.tsx",
+      "sink": "Alert.alert",
+      "lines": [
+        30
+      ],
+      "occurrences": 1,
+      "status": "accepted_risk",
+      "guard": "mensagens estáticas",
+      "note": "Alerta de notificações exibe apenas texto fixo de interface.",
+      "sourceHints": []
+    },
+    {
+      "file": "src/context/AuthContext.tsx",
+      "sink": "throw new Error",
+      "lines": [
+        20
+      ],
+      "occurrences": 1,
+      "status": "accepted_risk",
+      "guard": "erro de desenvolvedor",
+      "note": "Erro \"AuthProvider ausente\" é uma falha de composição de componente, sem PII.",
+      "sourceHints": [
+        "young"
+      ]
+    },
+    {
+      "file": "src/database/connection.ts",
+      "sink": "db.execAsync",
+      "lines": [
+        9,
+        16,
+        17
+      ],
+      "occurrences": 3,
+      "status": "accepted_risk",
+      "guard": "SQLite local",
+      "note": "Abertura e migração do banco local; não há sink externo nem log de PII.",
+      "sourceHints": []
+    },
+    {
+      "file": "src/database/connection.ts",
+      "sink": "throw new Error",
+      "lines": [
+        13
+      ],
+      "occurrences": 1,
+      "status": "accepted_risk",
+      "guard": "SQLite local",
+      "note": "Abertura e migração do banco local; não há sink externo nem log de PII.",
+      "sourceHints": []
+    },
+    {
+      "file": "src/database/repositories/index.ts",
+      "sink": "throw new Error",
+      "lines": [
+        12,
+        41,
+        43,
+        45,
+        65,
+        68,
+        71,
+        73,
+        79,
+        89,
+        92,
+        93,
+        95
+      ],
+      "occurrences": 13,
+      "status": "accepted_risk",
+      "guard": "hasConsent + SQLite sandbox",
+      "note": "Persistência local em SQLite sandbox do app; o backend criptografa a PII em repouso no fluxo de pedidos.",
+      "sourceHints": [
+        "young",
+        "nome",
+        "password",
+        "senha"
+      ]
+    },
+    {
+      "file": "src/database/repositories/index.ts",
+      "sink": "db.runAsync",
+      "lines": [
+        27,
+        46,
+        50,
+        75,
+        78,
+        80,
+        82,
+        83,
+        84,
+        96,
+        97
+      ],
+      "occurrences": 11,
+      "status": "accepted_risk",
+      "guard": "hasConsent + SQLite sandbox",
+      "note": "Persistência local em SQLite sandbox do app; o backend criptografa a PII em repouso no fluxo de pedidos.",
+      "sourceHints": []
+    },
+    {
+      "file": "src/database/repositories/index.ts",
+      "sink": "confirmOrder",
+      "lines": [
+        64
+      ],
+      "occurrences": 1,
+      "status": "accepted_risk",
+      "guard": "hasConsent + SQLite sandbox",
+      "note": "Persistência local em SQLite sandbox do app; o backend criptografa a PII em repouso no fluxo de pedidos.",
+      "sourceHints": [
+        "address",
+        "cep",
+        "logradouro",
+        "numero",
+        "bairro",
+        "cidade",
+        "uf",
+        "contato",
+        "endereço",
+        "nome"
+      ]
+    },
+    {
+      "file": "src/database/repositories/index.ts",
+      "sink": "saveFeedback",
+      "lines": [
+        88
+      ],
+      "occurrences": 1,
+      "status": "accepted_risk",
+      "guard": "hasConsent + SQLite sandbox",
+      "note": "Persistência local em SQLite sandbox do app; o backend criptografa a PII em repouso no fluxo de pedidos.",
+      "sourceHints": [
+        "cep",
+        "logradouro",
+        "numero",
+        "complemento",
+        "bairro",
+        "cidade",
+        "uf",
+        "telefone",
+        "address",
+        "contato",
+        "comment"
+      ]
+    },
+    {
+      "file": "src/database/seeds/initialData.ts",
+      "sink": "db.runAsync",
+      "lines": [
+        31
+      ],
+      "occurrences": 1,
+      "status": "accepted_risk",
+      "guard": "dados fictícios de demonstração",
+      "note": "Seed contém dados fictícios usados apenas para demonstração local; não são dados reais de cidadãos.",
+      "sourceHints": []
+    },
+    {
+      "file": "src/security/taint.ts",
+      "sink": "console.log",
+      "lines": [
+        147
+      ],
+      "occurrences": 1,
+      "status": "guarded",
+      "guard": "safeLog",
+      "note": "O sink de console é o próprio safeLog, que mascara PII antes de registrar.",
+      "sourceHints": []
+    },
+    {
+      "file": "src/services/catalogService.ts",
+      "sink": "throw new Error",
+      "lines": [
+        9
+      ],
+      "occurrences": 1,
+      "status": "guarded",
+      "guard": "camada de segurança",
+      "note": "Sink pertence à camada de segurança e usa mascaramento/sanitização.",
+      "sourceHints": []
+    },
+    {
+      "file": "src/services/securityService.ts",
+      "sink": "reportSecurityEvent",
+      "lines": [
+        32
+      ],
+      "occurrences": 1,
+      "status": "guarded",
+      "guard": "maskPii + sanitized event",
+      "note": "Somente eventos sanitizados são enviados ao backend; falha de rede é silenciosa e não vaza PII.",
+      "sourceHints": []
+    },
+    {
+      "file": "src/services/securityService.ts",
+      "sink": "fetch",
+      "lines": [
+        55
+      ],
+      "occurrences": 1,
+      "status": "guarded",
+      "guard": "maskPii + sanitized event",
+      "note": "Somente eventos sanitizados são enviados ao backend; falha de rede é silenciosa e não vaza PII.",
+      "sourceHints": []
+    }
+  ],
+  "recommendations": [
+    "Manter o consentimento obrigatório antes de qualquer pedido ou feedback.",
+    "Nunca remover o mascaramento de PII das respostas do dashboard e da API.",
+    "Revisar a política de risco residual quando novos sinks forem adicionados.",
+    "Substituir a chave de criptografia de desenvolvimento por segredo real em produção.",
+    "Executar npm run security:test e npm run security:audit antes de cada entrega."
+  ]
+}

@@ -123,6 +123,26 @@ python tests/test_schema.py
 
 Os testes locais SQL validam tabelas, relacionamentos e constraints. É necessário testar adicionalmente no Expo Go ou emulador, registrando eventuais correções. Esta entrega em ZIP não contém `node_modules`, instalação do Expo Go, APK nem um vídeo já gravado.
 
+## Módulo de Cybersecurity (Global Solution 2026.2)
+
+Esta versão inclui a entrega de **Cybersecurity** do projeto oficial TRAJEtória: catálogo de PII, mascaramento, taint analysis source→sink, backend de proteção com consentimento e criptografia, tradução por IA e dashboard web com farol verde/amarelo/vermelho.
+
+- Relatório: `docs/cybersecurity/RELATORIO_CYBERSECURITY.pdf`
+- Evidências: `docs/cybersecurity/EVIDENCIAS.pdf`
+- Dashboard: `http://localhost:3333/dashboard` após `npm run security:start`
+
+```powershell
+npm run security:test       # 33 testes automatizados
+npm run security:audit      # taint analysis estática
+npm run security:demo       # simulação end-to-end
+npm run security:evidence   # evidências JSON/HTML
+npm run security:report     # relatório Markdown/HTML
+npm run security:pdf        # relatório e evidências em PDF
+npm run security:zip        # pacote final de código
+```
+
+Os dados de demonstração são fictícios. Nenhuma PII bruta é gravada nas evidências ou retornada pelo dashboard.
+
 ## Entregáveis FIAP ainda a completar
 
 - [ ] Preencher nomes, RMs e turma da equipe no topo deste README.

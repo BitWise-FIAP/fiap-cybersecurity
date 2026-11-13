@@ -1,0 +1,55 @@
+{
+  "generatedAt": "2026-11-13T14:30:11.979Z",
+  "matrix": [
+    {
+      "scenario": "safe",
+      "description": "Nenhum evento",
+      "score": 0,
+      "level": "baixo",
+      "events": 0
+    },
+    {
+      "scenario": "blocked",
+      "description": "PII crítica bloqueada antes do sink",
+      "score": 6,
+      "level": "baixo",
+      "events": 1
+    },
+    {
+      "scenario": "allowed",
+      "description": "PII crítica permitida em resposta",
+      "score": 40,
+      "level": "moderado",
+      "events": 1
+    },
+    {
+      "scenario": "critical",
+      "description": "Três exposições críticas permitidas",
+      "score": 100,
+      "level": "critico",
+      "events": 3
+    }
+  ],
+  "thresholds": [
+    {
+      "level": "baixo",
+      "range": "0–19",
+      "color": "verde"
+    },
+    {
+      "level": "moderado",
+      "range": "20–49",
+      "color": "amarelo"
+    },
+    {
+      "level": "alto",
+      "range": "50–74",
+      "color": "laranja"
+    },
+    {
+      "level": "critico",
+      "range": "75–100",
+      "color": "vermelho"
+    }
+  ]
+}

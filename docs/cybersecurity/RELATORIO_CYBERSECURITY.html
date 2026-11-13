@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Relatório de Cybersecurity — TRAJEtória</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  @page { size: A4; margin: 16mm 14mm; }
+  body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; background: #fff; color: #251b3b; line-height: 1.55; }
+  .cover { min-height: 92vh; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, #3b1f6e, #7b4fc9 65%, #b98ae8); color: #fff; padding: 60px 54px; border-radius: 0 0 32px 32px; page-break-after: always; }
+  .cover .kicker { text-transform: uppercase; letter-spacing: .18em; font-size: 12px; opacity: .9; margin-bottom: 18px; }
+  .cover h1 { font-size: 46px; line-height: 1.1; margin: 0 0 16px; }
+  .cover h2 { font-size: 22px; font-weight: 500; margin: 0 0 30px; opacity: .95; }
+  .cover .meta { display: grid; gap: 8px; font-size: 15px; max-width: 520px; }
+  .cover .meta strong { display: inline-block; min-width: 120px; opacity: .85; font-weight: 600; }
+  .cover .seal { margin-top: 40px; display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3); padding: 10px 16px; border-radius: 999px; font-size: 13px; width: fit-content; }
+  main { max-width: 980px; margin: 0 auto; padding: 40px 34px 70px; }
+  section { margin-bottom: 30px; page-break-inside: avoid; }
+  h2 { font-size: 23px; color: #4b2a86; margin: 0 0 12px; padding-bottom: 6px; border-bottom: 2px solid #efe9fb; }
+  h3 { font-size: 17px; color: #5b3a95; margin: 18px 0 8px; }
+  p { margin: 0 0 10px; }
+  ul, ol { margin: 0 0 12px 22px; padding: 0; }
+  li { margin-bottom: 5px; }
+  code { font-family: "Cascadia Code", Consolas, monospace; font-size: 12px; background: #f4f0fc; padding: 2px 5px; border-radius: 5px; word-break: break-word; }
+  pre { background: #251b3b; color: #f6f4fb; padding: 16px; border-radius: 12px; overflow: auto; font-size: 12px; line-height: 1.45; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin: 10px 0 16px; }
+  th, td { text-align: left; padding: 8px 8px; border-bottom: 1px solid #ece7f7; vertical-align: top; }
+  th { color: #5b4a80; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; background: #faf8ff; }
+  .badge { display: inline-block; padding: 3px 9px; border-radius: 999px; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+  .badge.green { background: #d9f7e5; color: #0b6b35; }
+  .badge.yellow { background: #fff2c7; color: #7a5a00; }
+  .badge.orange { background: #ffe0c2; color: #8a3d00; }
+  .badge.red { background: #ffd6d6; color: #8f1111; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 16px 0 22px; }
+  .card { background: #f4f0fc; border-radius: 14px; padding: 14px 16px; }
+  .card span { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #6d5a94; margin-bottom: 6px; }
+  .card strong { font-size: 23px; }
+  .note { background: #f4f0fc; border-left: 4px solid #7b4fc9; padding: 12px 14px; border-radius: 8px; font-size: 13px; margin: 12px 0; }
+  .diagram { display: grid; gap: 10px; margin: 14px 0; }
+  .diagram .row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .diagram .box { flex: 1 1 200px; background: #f4f0fc; border: 1px solid #e2d8f7; border-radius: 12px; padding: 12px 14px; font-size: 13px; }
+  .diagram .box strong { display: block; color: #4b2a86; margin-bottom: 4px; }
+  .diagram .arrow { text-align: center; color: #7b4fc9; font-size: 18px; }
+  footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #ece7f7; color: #6d5a94; font-size: 12px; text-align: center; }
+  .print-hint { display: none; }
+  @media print { .cover { min-height: auto; border-radius: 0; } main { padding: 0; } }
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="kicker">FIAP · Global Solution 2026.2 · Cybersecurity</div>
+  <h1>Relatório de Cybersecurity<br/>TRAJEtória</h1>
+  <h2>Proteção de PII, taint analysis e dashboard de risco para uma CitizenTech de moda circular</h2>
+  <div class="meta">
+    <div><strong>Projeto</strong> TRAJEtória — moda circular para jovens</div>
+    <div><strong>Disciplina</strong> Cybersecurity</div>
+    <div><strong>Entrega</strong> 19/11/2026</div>
+    <div><strong>Integrantes</strong> [preencher nome completo e RM]</div>
+  </div>
+  <div class="seal">🔒 PII protegida · farol de risco · evidências sanitizadas</div>
+</div>
+<main>
+  <section>
+    <h2>1. Sumário executivo</h2>
+    <p>O TRAJEtória é uma plataforma CitizenTech que conecta jovens a doações de roupas, reduzindo o descarte têxtil e ampliando o acesso a vestuário. O fluxo lida com dados pessoais sensíveis: nome, CPF, e-mail, telefone, CEP, endereço, senha, informações de saúde em comentários e dados de menor de idade com responsável.</p>
+    <p>Esta entrega adiciona uma camada de segurança ao projeto oficial, sem reescrever o aplicativo: catálogo de PII, mascaramento, taint analysis source→sink, backend de proteção, tradução por IA e dashboard web com farol verde/amarelo/vermelho.</p>
+    <div class="cards">
+      <div class="card"><span>Findings de PII</span><strong>20</strong></div>
+      <div class="card"><span>Arquivos analisados</span><strong>41</strong></div>
+      <div class="card"><span>Sinks protegidos</span><strong>20</strong></div>
+      <div class="card"><span>Riscos aceitos</span><strong>17</strong></div>
+      <div class="card"><span>Risco residual</span><strong>moderado</strong></div>
+      <div class="card"><span>Testes</span><strong>33</strong></div>
+    </div>
+    <p class="note">Nenhuma PII bruta é gravada nas evidências ou retornada pelo dashboard. Os dados usados na demonstração são fictícios.</p>
+  </section>
+
+  <section>
+    <h2>2. Contexto e problema</h2>
+    <p>A LGPD (Lei 13.709/2018) exige finalidade, necessidade e segurança no tratamento de dados pessoais. Em um app comunitário, os riscos típicos são:</p>
+    <ul>
+      <li>PII em logs de console, arquivos de log ou ferramentas de observabilidade.</li>
+      <li>PII em respostas HTTP públicas ou em telas de erro.</li>
+      <li>PII enviada a modelos de IA em prompts.</li>
+      <li>PII em banco local sem criptografia e em exportações.</li>
+      <li>Dados de saúde e de menores de idade tratados sem proteção reforçada.</li>
+    </ul>
+    <p>A solução adota o princípio de minimização: o dado bruto só existe na origem; antes de cada sink, ele é mascarado, bloqueado ou criptografado.</p>
+  </section>
+
+  <section>
+    <h2>3. Arquitetura da solução</h2>
+    <div class="diagram">
+      <div class="box"><strong>App Expo / React Native</strong>src/security · securityService · telas entrega/feedback</div>
+      <div class="arrow">▼</div>
+      <div class="box"><strong>Backend Node + TypeScript</strong>piiMiddleware · crypto · eventStore · aiTranslator · rotas</div>
+      <div class="arrow">▼</div>
+      <div class="box"><strong>Dashboard web</strong>farol verde/amarelo/vermelho · métricas · eventos sanitizados</div>
+    </div>
+    <p>O backend usa apenas módulos nativos do Node (http, crypto, fs), sem dependências de runtime. O dashboard é servido pelo mesmo processo em /dashboard.</p>
+  </section>
+
+  <section>
+    <h2>4. Catálogo de PII e mascaramento</h2>
+    <table><thead><tr><th>Categoria</th><th>Exemplos</th><th>Estratégia</th><th>Severidade</th></tr></thead><tbody><tr><td>Identificação</td><td>Nome, CPF, RG, passaporte</td><td>[NOME REMOVIDO] / ***.***.***-**</td><td>alta/crítica</td></tr><tr><td>Contato</td><td>E-mail, telefone</td><td>[CONTATO REMOVIDO] / (**) *****-****</td><td>alta</td></tr><tr><td>Endereço</td><td>CEP, logradouro, número, bairro, cidade, UF</td><td>[ENDEREÇO REMOVIDO]</td><td>média/alta</td></tr><tr><td>Credencial</td><td>Senha, token, chave</td><td>******** / [CREDENCIAL REMOVIDA]</td><td>crítica</td></tr><tr><td>Saúde</td><td>Doença, medicamento, tratamento</td><td>[DADO DE SAÚDE REMOVIDO]</td><td>crítica</td></tr><tr><td>Menor</td><td>Menor de idade, responsável</td><td>*** / [RESPONSÁVEL REMOVIDO]</td><td>crítica</td></tr><tr><td>Financeiro</td><td>Cartão, conta, Pix</td><td>[DADO FINANCEIRO REMOVIDO]</td><td>crítica</td></tr></tbody></table>
+    <p>O catálogo combina detecção por padrão (regex com validação de CPF, e-mail, telefone, CEP, cartão, Pix, senha e termos de saúde) e detecção por nome de campo. Assim, mesmo um valor sem formato reconhecível é protegido.</p>
+    <table><thead><tr><th>Regra</th><th>Categoria</th><th>Severidade</th><th>Campo</th><th>Valor mascarado</th></tr></thead><tbody><tr><td><code>FIELD-nome</code></td><td>identificacao</td><td><span class="badge green">medium</span></td><td>nome</td><td><code>[NOME REMOVIDO]</code></td></tr><tr><td><code>FIELD-cpf</code></td><td>identificacao</td><td><span class="badge green">high</span></td><td>cpf</td><td><code>[DOCUMENTO REMOVIDO]</code></td></tr><tr><td><code>PII-CPF</code></td><td>identificacao</td><td><span class="badge green">high</span></td><td>cpf</td><td><code>***.***.***-**</code></td></tr><tr><td><code>FIELD-email</code></td><td>contato</td><td><span class="badge green">medium</span></td><td>email</td><td><code>[CONTATO REMOVIDO]</code></td></tr><tr><td><code>PII-EMAIL</code></td><td>contato</td><td><span class="badge green">medium</span></td><td>email</td><td><code>***@***.***</code></td></tr><tr><td><code>FIELD-telefone</code></td><td>contato</td><td><span class="badge green">medium</span></td><td>telefone</td><td><code>[CONTATO REMOVIDO]</code></td></tr><tr><td><code>PII-PHONE</code></td><td>contato</td><td><span class="badge green">medium</span></td><td>telefone</td><td><code>(**) *****-****</code></td></tr><tr><td><code>FIELD-cep</code></td><td>endereco</td><td><span class="badge green">low</span></td><td>cep</td><td><code>[ENDEREÇO REMOVIDO]</code></td></tr><tr><td><code>PII-CEP</code></td><td>endereco</td><td><span class="badge green">low</span></td><td>cep</td><td><code>*****-***</code></td></tr><tr><td><code>FIELD-endereco_logradouro</code></td><td>endereco</td><td><span class="badge green">medium</span></td><td>endereco_logradouro</td><td><code>[ENDEREÇO REMOVIDO]</code></td></tr><tr><td><code>PII-ADDRESS</code></td><td>endereco</td><td><span class="badge green">medium</span></td><td>endereco_logradouro</td><td><code>[ENDEREÇO REMOVIDO]</code></td></tr><tr><td><code>FIELD-endereco_numero</code></td><td>endereco</td><td><span class="badge green">medium</span></td><td>endereco_numero</td><td><code>[ENDEREÇO REMOVIDO]</code></td></tr><tr><td><code>FIELD-endereco_bairro</code></td><td>endereco</td><td><span class="badge green">medium</span></td><td>endereco_bairro</td><td><code>[ENDEREÇO REMOVIDO]</code></td></tr><tr><td><code>FIELD-endereco_cidade</code></td><td>endereco</td><td><span class="badge green">medium</span></td><td>endereco_cidade</td><td><code>[ENDEREÇO REMOVIDO]</code></td></tr><tr><td><code>FIELD-endereco_uf</code></td><td>endereco</td><td><span class="badge green">medium</span></td><td>endereco_uf</td><td><code>[ENDEREÇO REMOVIDO]</code></td></tr><tr><td><code>FIELD-senha</code></td><td>credencial</td><td><span class="badge red">critical</span></td><td>senha</td><td><code>********</code></td></tr><tr><td><code>FIELD-comentario</code></td><td>outro</td><td><span class="badge green">low</span></td><td>comentario</td><td><code>[TEXTO LIVRE]</code></td></tr><tr><td><code>PII-HEALTH</code></td><td>saude</td><td><span class="badge green">high</span></td><td>comentario</td><td><code>[DADO DE SAÚDE REMOVIDO]</code></td></tr><tr><td><code>FIELD-menor_de_idade</code></td><td>menor</td><td><span class="badge green">high</span></td><td>menor_de_idade</td><td><code>***</code></td></tr><tr><td><code>FIELD-responsavel</code></td><td>menor</td><td><span class="badge green">high</span></td><td>responsavel</td><td><code>***</code></td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>5. Taint analysis source→sink</h2>
+    <p>A análise estática percorre app, src e backend, identifica fontes de PII e sinks (console, log, resposta HTTP, prompt de IA, banco, exportação e tela de erro). O relatório completo fica em <code>docs/cybersecurity/evidencias/taint-report.json</code>.</p>
+    <table><thead><tr><th>Métrica</th><th>Valor</th></tr></thead><tbody><tr><td>Arquivos analisados</td><td>41</td></tr><tr><td>Arquivos com fontes de PII</td><td>15</td></tr><tr><td>Ocorrências de fonte</td><td>48</td></tr><tr><td>Grupos de sink</td><td>37</td></tr><tr><td>Ocorrências de sink</td><td>103</td></tr><tr><td>Protegidos</td><td>20</td></tr><tr><td>Risco aceito</td><td>17</td></tr><tr><td>Sem proteção</td><td>0</td></tr></tbody></table>
+    <table><thead><tr><th>Arquivo</th><th>Sink</th><th>Linhas</th><th>Status</th><th>Proteção</th></tr></thead><tbody><tr><td><code>app/(jovem)/acompanhar.tsx</code></td><td><code>Alert.alert</code></td><td>12, 21</td><td><span class="badge yellow">risco aceito</span></td><td>mensagens estáticas</td></tr><tr><td><code>app/(jovem)/catalogo.tsx</code></td><td><code>Alert.alert</code></td><td>21</td><td><span class="badge green">protegido</span></td><td>safeErrorMessage</td></tr><tr><td><code>app/(jovem)/detalhe/[id].tsx</code></td><td><code>Alert.alert</code></td><td>15</td><td><span class="badge green">protegido</span></td><td>safeErrorMessage</td></tr><tr><td><code>app/(jovem)/entrega.tsx</code></td><td><code>reportSecurityEvent</code></td><td>24, 31</td><td><span class="badge green">protegido</span></td><td>scanLocal + hasConsent + safeErrorMessage</td></tr><tr><td><code>app/(jovem)/entrega.tsx</code></td><td><code>Alert.alert</code></td><td>25, 33, 35</td><td><span class="badge green">protegido</span></td><td>scanLocal + hasConsent + safeErrorMessage</td></tr><tr><td><code>app/(jovem)/entrega.tsx</code></td><td><code>confirmOrder</code></td><td>30</td><td><span class="badge green">protegido</span></td><td>scanLocal + hasConsent + safeErrorMessage</td></tr><tr><td><code>app/(jovem)/feedback.tsx</code></td><td><code>Alert.alert</code></td><td>16, 30, 32</td><td><span class="badge green">protegido</span></td><td>sanitizeFreeText + hasConsent + safeErrorMessage</td></tr><tr><td><code>app/(jovem)/feedback.tsx</code></td><td><code>reportSecurityEvent</code></td><td>22, 29</td><td><span class="badge green">protegido</span></td><td>sanitizeFreeText + hasConsent + safeErrorMessage</td></tr><tr><td><code>app/(jovem)/feedback.tsx</code></td><td><code>saveFeedback</code></td><td>28</td><td><span class="badge green">protegido</span></td><td>sanitizeFreeText + hasConsent + safeErrorMessage</td></tr><tr><td><code>app/(jovem)/meu-pedido.tsx</code></td><td><code>Alert.alert</code></td><td>12, 14</td><td><span class="badge yellow">risco aceito</span></td><td>mensagens estáticas + nome da peça</td></tr><tr><td><code>app/(jovem)/perfil.tsx</code></td><td><code>Alert.alert</code></td><td>15</td><td><span class="badge yellow">risco aceito</span></td><td>mensagens estáticas</td></tr><tr><td><code>app/consentimento.tsx</code></td><td><code>Alert.alert</code></td><td>19</td><td><span class="badge yellow">risco aceito</span></td><td>mensagens estáticas</td></tr><tr><td><code>app/index.tsx</code></td><td><code>Alert.alert</code></td><td>24</td><td><span class="badge yellow">risco aceito</span></td><td>mensagens estáticas</td></tr><tr><td><code>backend/http/body.ts</code></td><td><code>sendJson</code></td><td>12, 22</td><td><span class="badge green">protegido</span></td><td>limite de body + erro estático</td></tr><tr><td><code>backend/http/responses.ts</code></td><td><code>sendJson</code></td><td>35, 76, 92, 96, 100</td><td><span class="badge green">protegido</span></td><td>sendJson seguro</td></tr><tr><td><code>backend/http/responses.ts</code></td><td><code>res.end</code></td><td>49, 60, 71, 88</td><td><span class="badge green">protegido</span></td><td>sendJson seguro</td></tr><tr><td><code>backend/routes/orders.ts</code></td><td><code>sendJson</code></td><td>18, 32, 61, 75, 83, 89</td><td><span class="badge green">protegido</span></td><td>protectForOrder + protectForFeedback + publicView</td></tr><tr><td><code>backend/routes/security.ts</code></td><td><code>sendJson</code></td><td>63, 72, 95, 112, 134, 145</td><td><span class="badge green">protegido</span></td><td>buildDashboardPayload + protectPayload</td></tr><tr><td><code>backend/security/aiTranslator.ts</code></td><td><code>throw new Error</code></td><td>125, 130, 163, 168</td><td><span class="badge green">protegido</span></td><td>sanitizedEvent</td></tr><tr><td><code>backend/security/crypto.ts</code></td><td><code>throw new Error</code></td><td>32</td><td><span class="badge green">protegido</span></td><td>AES-256-GCM</td></tr><tr><td><code>backend/security/piiMiddleware.ts</code></td><td><code>throw new Error</code></td><td>83</td><td><span class="badge green">protegido</span></td><td>protectForLog/Ai/Response/Order/Feedback</td></tr><tr><td><code>backend/server.ts</code></td><td><code>res.end</code></td><td>43, 67, 113</td><td><span class="badge yellow">risco aceito</span></td><td>logs estáticos de inicialização</td></tr><tr><td><code>backend/server.ts</code></td><td><code>sendJson</code></td><td>56, 84, 116</td><td><span class="badge yellow">risco aceito</span></td><td>logs estáticos de inicialização</td></tr><tr><td><code>backend/server.ts</code></td><td><code>console.log</code></td><td>129, 132, 135</td><td><span class="badge yellow">risco aceito</span></td><td>logs estáticos de inicialização</td></tr></tbody></table>
+    <p>A análise dinâmica executa o mesmo payload fictício por oito sinks. Nenhum valor bruto é retornado:</p>
+    <table><thead><tr><th>Sink</th><th>Autenticado</th><th>Ação</th><th>Resultado</th><th>Payload sanitizado</th></tr></thead><tbody><tr><td><code>console</code></td><td>não</td><td>blocked</td><td><span class="badge green">bloqueado</span></td><td><code>{&quot;nome&quot;:&quot;[NOME REMOVIDO]&quot;,&quot;cpf&quot;:&quot;[DOCUMENTO REMOVIDO]&quot;,&quot;email&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;telefone&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;cep</code></td></tr><tr><td><code>log</code></td><td>não</td><td>blocked</td><td><span class="badge green">bloqueado</span></td><td><code>{&quot;nome&quot;:&quot;[NOME REMOVIDO]&quot;,&quot;cpf&quot;:&quot;[DOCUMENTO REMOVIDO]&quot;,&quot;email&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;telefone&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;cep</code></td></tr><tr><td><code>http_response</code></td><td>não</td><td>blocked</td><td><span class="badge green">bloqueado</span></td><td><code>{&quot;error&quot;:&quot;Conteúdo protegido&quot;,&quot;code&quot;:&quot;PII_BLOCKED&quot;}</code></td></tr><tr><td><code>http_response</code></td><td>sim</td><td>masked</td><td><span class="badge yellow">permitido</span></td><td><code>{&quot;nome&quot;:&quot;[NOME REMOVIDO]&quot;,&quot;cpf&quot;:&quot;[DOCUMENTO REMOVIDO]&quot;,&quot;email&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;telefone&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;cep</code></td></tr><tr><td><code>llm_prompt</code></td><td>não</td><td>blocked</td><td><span class="badge green">bloqueado</span></td><td><code>{&quot;nome&quot;:&quot;[NOME REMOVIDO]&quot;,&quot;cpf&quot;:&quot;[DOCUMENTO REMOVIDO]&quot;,&quot;email&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;telefone&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;cep</code></td></tr><tr><td><code>database</code></td><td>não</td><td>encrypted</td><td><span class="badge yellow">permitido</span></td><td><code>&quot;[ENCRYPTED]&quot;</code></td></tr><tr><td><code>export</code></td><td>não</td><td>blocked</td><td><span class="badge green">bloqueado</span></td><td><code>{&quot;nome&quot;:&quot;[NOME REMOVIDO]&quot;,&quot;cpf&quot;:&quot;[DOCUMENTO REMOVIDO]&quot;,&quot;email&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;telefone&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;cep</code></td></tr><tr><td><code>error_screen</code></td><td>não</td><td>blocked</td><td><span class="badge green">bloqueado</span></td><td><code>{&quot;nome&quot;:&quot;[NOME REMOVIDO]&quot;,&quot;cpf&quot;:&quot;[DOCUMENTO REMOVIDO]&quot;,&quot;email&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;telefone&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;cep</code></td></tr></tbody></table>
+    <p class="note">Riscos aceitos e documentados: o SQLite local do app é um sandbox do dispositivo; o backend criptografa a PII em repouso no fluxo de pedidos. Os seeds usam dados fictícios de demonstração. A chave de criptografia de desenvolvimento deve ser substituída em produção.</p>
+  </section>
+
+  <section>
+    <h2>6. Backend de segurança</h2>
+    <ul>
+      <li><strong>Consentimento obrigatório</strong> em /api/orders e /api/feedback; o app também bloqueia pedido e feedback sem consentimento.</li>
+      <li><strong>Criptografia AES-256-GCM</strong> para PII em repouso, com IV aleatório e tag de autenticação.</li>
+      <li><strong>Comparação de token em tempo constante</strong> para o token de demonstração.</li>
+      <li><strong>Limite de body</strong> de 1 MB e respostas de erro estáticas, sem stack trace.</li>
+      <li><strong>Cabeçalhos de segurança</strong> e CORS controlado.</li>
+      <li><strong>Event store</strong> com no máximo 500 eventos sanitizados, sem PII bruta.</li>
+      <li><strong>Rotas:</strong> /health, /api/security/dashboard, /api/security/demo, /api/security/scan, /api/security/events, /api/security/clear, /api/security/report, /api/orders, /api/orders/:id, /api/feedback.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>7. Tradução por IA</h2>
+    <p>O tradutor recebe apenas campos sanitizados do evento (sink, ação, categoria, severidade, regras e valor mascarado). O prompt nunca inclui PII bruta.</p>
+    <p>Ordem de execução: OpenAI (se OPENAI_API_KEY existir) → Gemini (se GEMINI_API_KEY existir) → fallback local determinístico. O resultado é cacheado em memória. Sem chaves, a demonstração continua funcionando offline.</p>
+    <p class="note">Uma tentativa de expor uma senha foi bloqueada antes de chegar aos logs. Nenhuma credencial saiu do sistema.</p>
+  </section>
+
+  <section>
+    <h2>8. Dashboard web com farol de risco</h2>
+    <p>O dashboard fica em <code>/dashboard</code> e é servido pelo backend. Ele exibe farol verde (0–19), amarelo (20–49), laranja (50–74) e vermelho (75–100), score de risco, eventos bloqueados, mascarados, criptografados e permitidos, distribuição por severidade/categoria, últimos eventos sanitizados e tradução em linguagem simples.</p>
+    <table><thead><tr><th>Cenário</th><th>Descrição</th><th>Score</th><th>Farol</th></tr></thead><tbody><tr><td><strong>safe</strong></td><td>Nenhum evento</td><td>0/100</td><td><span class="badge green">baixo</span></td></tr><tr><td><strong>blocked</strong></td><td>PII crítica bloqueada antes do sink</td><td>6/100</td><td><span class="badge green">baixo</span></td></tr><tr><td><strong>allowed</strong></td><td>PII crítica permitida em resposta</td><td>40/100</td><td><span class="badge yellow">moderado</span></td></tr><tr><td><strong>critical</strong></td><td>Três exposições críticas permitidas</td><td>100/100</td><td><span class="badge red">critico</span></td></tr></tbody></table>
+    <figure>
+      <img src="evidencias/dashboard.png" alt="Dashboard de segurança do TRAJEtória com farol de risco" style="width:100%;border-radius:14px;border:1px solid #e2d8f7;margin:12px 0;" />
+      <figcaption class="note">Captura gerada por <code>npm run security:dashboard-shot</code> com eventos fictícios. Nenhuma PII bruta é exibida.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>9. Integração no aplicativo</h2>
+    <ul>
+      <li><strong>Entrega:</strong> scan local do endereço; bloqueio de credencial, saúde e menor de idade; evento de segurança best-effort; erros seguros.</li>
+      <li><strong>Feedback:</strong> sanitização do comentário com sanitizeFreeText; aviso de PII; consentimento; erros seguros.</li>
+      <li><strong>Repositórios:</strong> confirmOrder e saveFeedback exigem consentimento antes de qualquer gravação.</li>
+      <li><strong>Serviço:</strong> reportSecurityEvent envia somente eventos mascarados e falha em silêncio se o backend estiver offline.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>10. Evidências e testes</h2>
+    <p>Resultado dos testes: <strong>33 testes aprovados</strong>, cobrindo PII, taint, risco, criptografia, tradutor e servidor HTTP.</p>
+    <pre>npm run security:build
+npm run security:test
+npm run security:audit
+npm run security:demo
+npm run security:evidence
+npm run security:report
+npm run security:pdf
+npm run security:dashboard-shot
+npm run security:zip</pre>
+    <p>Arquivos de evidência em <code>docs/cybersecurity/evidencias</code>: pii-scan.json, taint-traces.json, risk-matrix.json, taint-report.json, taint-report.md, evidence.html, dashboard.png e demo-result.json.</p>
+  </section>
+
+  <section>
+    <h2>11. Riscos residuais e melhorias</h2>
+    <ol>
+      <li>SQLite local do app mantém PII em texto claro dentro do sandbox do dispositivo. Mitigação futura: SQLCipher ou criptografia de campo.</li>
+      <li>A chave de criptografia padrão é de desenvolvimento. Em produção, usar segredo gerenciado e rotação.</li>
+      <li>O token de demonstração não substitui autenticação real. Em produção, usar OAuth/JWT com escopos.</li>
+      <li>Não há rate limiting no backend de demonstração. Adicionar limite por IP/usuário em produção.</li>
+      <li>Dados de seed são fictícios; nunca usar dados reais de cidadãos em demonstrações.</li>
+      <li>A tradução por IA depende de provedores externos; o fallback local garante disponibilidade, mas a qualidade é menor.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>12. Como executar</h2>
+    <pre>npm install
+npm run security:test
+npm run security:audit
+npm run security:demo
+npm run security:evidence
+npm run security:report
+npm run security:pdf
+npm run security:start</pre>
+    <p>Dashboard: <code>http://localhost:3333/dashboard</code></p>
+  </section>
+
+  <section>
+    <h2>13. Checklist de entrega</h2>
+    <ul>
+      <li>☑ Catálogo de PII e mascaramento.</li>
+      <li>☑ Taint analysis source→sink (estática e dinâmica).</li>
+      <li>☑ Backend com consentimento, criptografia e eventos.</li>
+      <li>☑ Tradução por IA com fallback local.</li>
+      <li>☑ Dashboard web com farol verde/amarelo/vermelho.</li>
+      <li>☑ Integração mínima no app.</li>
+      <li>☑ Testes automatizados.</li>
+      <li>☑ Evidências JSON/HTML e captura do dashboard.</li>
+      <li>☑ Relatório em Markdown/HTML.</li>
+      <li>☑ PDF final e ZIP de código.</li>
+      <li>☐ Preencher nomes e RMs dos integrantes.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>14. Referências</h2>
+    <ul>
+      <li>FIAP Global Solution 2026.2 — enunciado de Cybersecurity.</li>
+      <li>OWASP Top 10 2021: A01 Broken Access Control, A02 Cryptographic Failures, A03 Injection, A09 Security Logging and Monitoring Failures.</li>
+      <li>LGPD, Lei 13.709/2018, arts. 6º e 46.</li>
+      <li>Documentação do projeto TRAJEtória e repositório oficial BitWise-FIAP/fiap-mdi-TRAJEtoria.</li>
+    </ul>
+  </section>
+
+  <footer>Relatório gerado em 13/11/2026, 11:30 · TRAJEtória Cybersecurity · dados fictícios e resultados sanitizados</footer>
+</main>
+</body>
+</html>

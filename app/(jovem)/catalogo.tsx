@@ -7,17 +7,18 @@ import {colors,config,radius,spacing,typography} from '../../src/constants/theme
 import {useAuth} from '../../src/context/AuthContext';
 import {fetchCatalog} from '../../src/services/catalogService';
 import {addPieceToSelection} from '../../src/database/repositories';
+import {safeErrorMessage} from '../../src/security';
 import type {Piece} from '../../src/types/models';
 import {pieceImage} from '../../src/constants/pictures';
 export default function Catalog(){
  const db=useSQLiteContext(),router=useRouter(),{young}=useAuth();const [pieces,setPieces]=useState<Piece[]>([]),[loading,setLoading]=useState(true),[error,setError]=useState(''),[size,setSize]=useState('M'),[category,setCategory]=useState('Todas'),[gender,setGender]=useState('Todos'),[fail,setFail]=useState(false);
- const reload=useCallback(async(testFail=false)=>{try{setLoading(true);setError('');setPieces(await fetchCatalog(db,testFail))}catch(e){setError(e instanceof Error?e.message:'Falha no carregamento')}finally{setLoading(false)}},[db]);
+ const reload=useCallback(async(testFail=false)=>{try{setLoading(true);setError('');setPieces(await fetchCatalog(db,testFail))}catch(e){setError(safeErrorMessage(e,'Falha no carregamento'))}finally{setLoading(false)}},[db]);
  useFocusEffect(useCallback(()=>{reload(false)},[reload]));
- const sizes=young?JSON.parse(young.tamanhos_json) as string[]:[young?.tamanho_referencia??'M'];
+ const sizes=young?JSON.parse(young.tamanhos_json) as string[]:['M'];
  const categories=['Todas',...Array.from(new Set(pieces.map(p=>p.categoria)))];
  const genders=['Todos','Feminino','Masculino','Unissex'];
  const filtered=pieces.filter(p=>p.tamanho===size&&(category==='Todas'||p.categoria===category)&&(gender==='Todos'||p.genero===gender));
- const add=async(p:Piece)=>{try{await addPieceToSelection(db,p.id);Alert.alert('Peça adicionada',`${p.nome} foi adicionada ao seu pedido.`,[{text:'Continuar escolhendo'},{text:'Ver meu pedido',onPress:()=>router.push('/(jovem)/meu-pedido')}])}catch(e){Alert.alert('Atenção',e instanceof Error?e.message:'Não foi possível adicionar a peça')}};
+ const add=async(p:Piece)=>{try{await addPieceToSelection(db,p.id);Alert.alert('Peça adicionada',`${p.nome} foi adicionada ao seu pedido.`,[{text:'Continuar escolhendo'},{text:'Ver meu pedido',onPress:()=>router.push('/(jovem)/meu-pedido')}])}catch(e){Alert.alert('Atenção',safeErrorMessage(e,'Não foi possível adicionar a peça'))}};
  const cycle=(items:string[],value:string,set:(x:string)=>void)=>set(items[(items.indexOf(value)+1)%items.length]);
  return <AppScreen active="catalogo"><View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}><View style={{flex:1}}><Heading size={38}>Catálogo</Heading><BodyText style={{fontSize:14}}>Escolha peças do seu tamanho.</BodyText></View><IconView name="shirt-outline" size={47} color={colors.purple}/></View>
  <View style={{backgroundColor:colors.lilac,borderRadius:radius.lg,padding:12,flexDirection:'row',gap:10,alignItems:'center',marginVertical:16}}><IconView name="ribbon-outline" color={colors.gold} size={30}/><View style={{flex:1}}><SmallHeading style={{fontSize:16}}>Catálogo curado</SmallHeading><BodyText style={{fontSize:12}}>Peças selecionadas, em bom estado e sem custo.</BodyText></View></View>

@@ -1,6 +1,9 @@
 node_modules/
 .expo/
 dist/
+dist-security/
+backend/data/
+TRAJEtoria-Cybersecurity.zip
 web-build/
 *.log
 *.db

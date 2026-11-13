@@ -9,7 +9,7 @@ import {colors,typography,config,spacing} from '../src/constants/theme';
 import {useAuth} from '../src/context/AuthContext';
 import {hasConsent} from '../src/database/repositories';
 export default function Login(){
- const router=useRouter(),db=useSQLiteContext(),{login}=useAuth();const [username,setUsername]=useState(config.demoUser),[password,setPassword]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState('');const[visible,setVisible]=useState(false);
+ const router=useRouter(),db=useSQLiteContext(),{login}=useAuth();const [username,setUsername]=useState<string>(config.demoUser),[password,setPassword]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState('');const[visible,setVisible]=useState(false);
  const submit=async()=>{try{setBusy(true);setError('');const ok=await login(username,password);if(!ok){setError('Identificação ou senha inválida. Confira e tente novamente.');return}router.replace(await hasConsent(db)?'/(jovem)/inicio':'/consentimento')}catch(e){setError('Não foi possível acessar. Tente novamente.')}finally{setBusy(false)}};
  return <SafeAreaView edges={['top','bottom']} style={{flex:1,backgroundColor:colors.deep}}><KeyboardAvoidingView behavior={Platform.OS==='ios'?'padding':undefined} style={{flex:1}}><ScrollView contentContainerStyle={{flexGrow:1,backgroundColor:colors.ivory}} keyboardShouldPersistTaps="handled">
   <LinearGradient colors={[colors.deep,colors.purpleDark,colors.purple]} style={{minHeight:300,justifyContent:'center',alignItems:'center',paddingTop:14,paddingBottom:30,borderBottomLeftRadius:55,borderBottomRightRadius:55,borderBottomWidth:2,borderColor:colors.gold}}>

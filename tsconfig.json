@@ -13,5 +13,13 @@
   "include": [
     "**/*.ts",
     "**/*.tsx"
+  ],
+  "exclude": [
+    "backend",
+    "scripts",
+    "tests/security",
+    "docs",
+    "dist-security",
+    "node_modules"
   ]
 }

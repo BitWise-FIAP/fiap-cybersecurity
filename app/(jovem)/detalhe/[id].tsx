@@ -4,6 +4,7 @@ import {useLocalSearchParams,useRouter} from 'expo-router';
 import {useSQLiteContext} from 'expo-sqlite';
 import {AppScreen,PageHeader,Heading,BodyText,SmallHeading,Button,IconView,StatusPill,StateView,Panel} from '../../../src/components/Design';
 import {getPiece,addPieceToSelection} from '../../../src/database/repositories';
+import {safeErrorMessage} from '../../../src/security';
 import type {Piece} from '../../../src/types/models';
 import {colors,radius,spacing,typography} from '../../../src/constants/theme';
 import {pieceImage,hoodieGallery} from '../../../src/constants/pictures';
@@ -11,7 +12,7 @@ export default function Detail(){
  const {id}=useLocalSearchParams<{id:string}>(),db=useSQLiteContext(),router=useRouter();const [piece,setPiece]=useState<Piece|null>(null),[loading,setLoading]=useState(true),[imageIndex,setImageIndex]=useState(0);
  useEffect(()=>{setLoading(true);getPiece(db,Number(id)).then(setPiece).finally(()=>setLoading(false))},[id,db]);
  const gallery=Number(id)===1?hoodieGallery:piece?[pieceImage(piece.id)]:[];
- const add=async()=>{if(!piece)return;try{await addPieceToSelection(db,piece.id);Alert.alert('Adicionado ao pedido',`${piece.nome} foi adicionada à sua seleção.`,[{text:'Continuar no catálogo',onPress:()=>router.replace('/(jovem)/catalogo')},{text:'Meu pedido',onPress:()=>router.push('/(jovem)/meu-pedido')}])}catch(e){Alert.alert('Atenção',e instanceof Error?e.message:'Peça indisponível')}};
+ const add=async()=>{if(!piece)return;try{await addPieceToSelection(db,piece.id);Alert.alert('Adicionado ao pedido',`${piece.nome} foi adicionada à sua seleção.`,[{text:'Continuar no catálogo',onPress:()=>router.replace('/(jovem)/catalogo')},{text:'Meu pedido',onPress:()=>router.push('/(jovem)/meu-pedido')}])}catch(e){Alert.alert('Atenção',safeErrorMessage(e,'Peça indisponível'))}};
  return <AppScreen active="catalogo">{loading?<StateView mode="loading"/>:!piece?<StateView mode="empty" message="Peça não encontrada." onRetry={()=>router.back()}/>:<>
  <PageHeader title={piece.nome} subtitle={`${piece.categoria} · ${piece.genero}`}/><View style={{alignSelf:'flex-start',backgroundColor:piece.status==='disponivel'?colors.successBg:colors.warningBg,borderRadius:30,paddingHorizontal:13,paddingVertical:5}}><BodyText style={{fontSize:12,fontFamily:typography.semibold}}>{piece.status==='disponivel'?'✓ Disponível':'Indisponível'}</BodyText></View>
  <View style={{marginTop:14}}><Image source={gallery[imageIndex]} resizeMode="cover" style={{width:'100%',height:255,borderRadius:radius.lg,backgroundColor:colors.lilac}}/><View style={{flexDirection:'row',gap:10,justifyContent:'center',marginTop:11}}>{gallery.map((source,i)=><Pressable key={i} onPress={()=>setImageIndex(i)} accessibilityRole="button" accessibilityLabel={`Fotografia ${i+1}`}><Image source={source} style={{width:56,height:48,borderRadius:10,borderWidth:2,borderColor:i===imageIndex?colors.purple:colors.transparent}}/></Pressable>)}</View></View>

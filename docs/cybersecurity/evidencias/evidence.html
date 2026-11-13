@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Evidências de Segurança — TRAJEtória</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; background: #f6f4fb; color: #251b3b; }
+  header { background: linear-gradient(135deg, #4b2a86, #7b4fc9); color: #fff; padding: 36px 40px; }
+  header h1 { margin: 0 0 8px; font-size: 30px; }
+  header p { margin: 0; opacity: .9; }
+  main { max-width: 1100px; margin: 0 auto; padding: 28px 24px 60px; }
+  section { background: #fff; border-radius: 18px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(50, 30, 90, .08); }
+  h2 { margin: 0 0 14px; font-size: 20px; color: #4b2a86; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .card { background: #f1ecfb; border-radius: 14px; padding: 14px 16px; }
+  .card span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: #6d5a94; margin-bottom: 6px; }
+  .card strong { font-size: 24px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid #ece7f7; vertical-align: top; }
+  th { color: #5b4a80; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+  code { font-family: "Cascadia Code", Consolas, monospace; font-size: 12px; background: #f4f0fc; padding: 2px 5px; border-radius: 5px; word-break: break-word; }
+  .badge { display: inline-block; padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+  .badge.green { background: #d9f7e5; color: #0b6b35; }
+  .badge.yellow { background: #fff2c7; color: #7a5a00; }
+  .badge.orange { background: #ffe0c2; color: #8a3d00; }
+  .badge.red { background: #ffd6d6; color: #8f1111; }
+  .note { background: #f1ecfb; border-left: 4px solid #7b4fc9; padding: 12px 14px; border-radius: 8px; font-size: 13px; }
+  pre { background: #251b3b; color: #f6f4fb; padding: 16px; border-radius: 12px; overflow: auto; font-size: 12px; }
+  footer { text-align: center; color: #6d5a94; font-size: 12px; padding: 20px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Evidências de Segurança — TRAJEtória</h1>
+  <p>FIAP Global Solution 2026.2 · Cybersecurity · dados fictícios e resultados sanitizados</p>
+</header>
+<main>
+  <div class="cards">
+    <div class="card"><span>Findings de PII</span><strong>20</strong></div>
+    <div class="card"><span>Severidade máxima</span><strong>critical</strong></div>
+    <div class="card"><span>Categorias</span><strong>7</strong></div>
+    <div class="card"><span>Sinks testados</span><strong>8</strong></div>
+    <div class="card"><span>Risco da simulação</span><strong>60/100</strong></div>
+  </div>
+
+  <section>
+    <h2>1. Catálogo de PII detectada</h2>
+    <p class="note">A fixture original não é gravada em disco. A tabela abaixo mostra apenas os valores mascarados.</p>
+    <table>
+      <thead><tr><th>Regra</th><th>Categoria</th><th>Severidade</th><th>Campo</th><th>Valor mascarado</th></tr></thead>
+      <tbody><tr>
+        <td><code>FIELD-nome</code></td>
+        <td>identificacao</td>
+        <td><span class="badge green">medium</span></td>
+        <td>nome</td>
+        <td><code>[NOME REMOVIDO]</code></td>
+      </tr>
+<tr>
+        <td><code>FIELD-cpf</code></td>
+        <td>identificacao</td>
+        <td><span class="badge green">high</span></td>
+        <td>cpf</td>
+        <td><code>[DOCUMENTO REMOVIDO]</code></td>
+      </tr>
+<tr>
+        <td><code>PII-CPF</code></td>
+        <td>identificacao</td>
+        <td><span class="badge green">high</span></td>
+        <td>cpf</td>
+        <td><code>***.***.***-**</code></td>
+      </tr>
+<tr>
+        <td><code>FIELD-email</code></td>
+        <td>contato</td>
+        <td><span class="badge green">medium</span></td>
+        <td>email</td>
+        <td><code>[CONTATO REMOVIDO]</code></td>
+      </tr>
+<tr>
+        <td><code>PII-EMAIL</code></td>
+        <td>contato</td>
+        <td><span class="badge green">medium</span></td>
+        <td>email</td>
+        <td><code>***@***.***</code></td>
+      </tr>
+<tr>
+        <td><code>FIELD-telefone</code></td>
+        <td>contato</td>
+        <td><span class="badge green">medium</span></td>
+        <td>telefone</td>
+        <td><code>[CONTATO REMOVIDO]</code></td>
+      </tr>
+<tr>
+        <td><code>PII-PHONE</code></td>
+        <td>contato</td>
+        <td><span class="badge green">medium</span></td>
+        <td>telefone</td>
+        <td><code>(**) *****-****</code></td>
+      </tr>
+<tr>
+        <td><code>FIELD-cep</code></td>
+        <td>endereco</td>
+        <td><span class="badge green">low</span></td>
+        <td>cep</td>
+        <td><code>[ENDEREÇO REMOVIDO]</code></td>
+      </tr>
+<tr>
+        <td><code>PII-CEP</code></td>
+        <td>endereco</td>
+        <td><span class="badge green">low</span></td>
+        <td>cep</td>
+        <td><code>*****-***</code></td>
+      </tr>
+<tr>
+        <td><code>FIELD-endereco_logradouro</code></td>
+        <td>endereco</td>
+        <td><span class="badge green">medium</span></td>
+        <td>endereco_logradouro</td>
+        <td><code>[ENDEREÇO REMOVIDO]</code></td>
+      </tr>
+<tr>
+        <td><code>PII-ADDRESS</code></td>
+        <td>endereco</td>
+        <td><span class="badge green">medium</span></td>
+        <td>endereco_logradouro</td>
+        <td><code>[ENDEREÇO REMOVIDO]</code></td>
+      </tr>
+<tr>
+        <td><code>FIELD-endereco_numero</code></td>
+        <td>endereco</td>
+        <td><span class="badge green">medium</span></td>
+        <td>endereco_numero</td>
+        <td><code>[ENDEREÇO REMOVIDO]</code></td>
+      </tr>
+<tr>
+        <td><code>FIELD-endereco_bairro</code></td>
+        <td>endereco</td>
+        <td><span class="badge green">medium</span></td>
+        <td>endereco_bairro</td>
+        <td><code>[ENDEREÇO REMOVIDO]</code></td>
+      </tr>
+<tr>
+        <td><code>FIELD-endereco_cidade</code></td>
+        <td>endereco</td>
+        <td><span class="badge green">medium</span></td>
+        <td>endereco_cidade</td>
+        <td><code>[ENDEREÇO REMOVIDO]</code></td>
+      </tr>
+<tr>
+        <td><code>FIELD-endereco_uf</code></td>
+        <td>endereco</td>
+        <td><span class="badge green">medium</span></td>
+        <td>endereco_uf</td>
+        <td><code>[ENDEREÇO REMOVIDO]</code></td>
+      </tr>
+<tr>
+        <td><code>FIELD-senha</code></td>
+        <td>credencial</td>
+        <td><span class="badge red">critical</span></td>
+        <td>senha</td>
+        <td><code>********</code></td>
+      </tr>
+<tr>
+        <td><code>FIELD-comentario</code></td>
+        <td>outro</td>
+        <td><span class="badge green">low</span></td>
+        <td>comentario</td>
+        <td><code>[TEXTO LIVRE]</code></td>
+      </tr>
+<tr>
+        <td><code>PII-HEALTH</code></td>
+        <td>saude</td>
+        <td><span class="badge green">high</span></td>
+        <td>comentario</td>
+        <td><code>[DADO DE SAÚDE REMOVIDO]</code></td>
+      </tr>
+<tr>
+        <td><code>FIELD-menor_de_idade</code></td>
+        <td>menor</td>
+        <td><span class="badge green">high</span></td>
+        <td>menor_de_idade</td>
+        <td><code>***</code></td>
+      </tr>
+<tr>
+        <td><code>FIELD-responsavel</code></td>
+        <td>menor</td>
+        <td><span class="badge green">high</span></td>
+        <td>responsavel</td>
+        <td><code>***</code></td>
+      </tr></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>2. Taint analysis: source → sink</h2>
+    <table>
+      <thead><tr><th>Sink</th><th>Autenticado</th><th>Ação</th><th>Resultado</th><th>Payload sanitizado</th></tr></thead>
+      <tbody><tr>
+        <td><code>console</code></td>
+        <td>não</td>
+        <td>blocked</td>
+        <td>bloqueado</td>
+        <td><code>{&quot;nome&quot;:&quot;[NOME REMOVIDO]&quot;,&quot;cpf&quot;:&quot;[DOCUMENTO REMOVIDO]&quot;,&quot;email&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;telefone&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;cep&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_logradouro&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_numero&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_bairro&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_ci</code></td>
+      </tr>
+<tr>
+        <td><code>log</code></td>
+        <td>não</td>
+        <td>blocked</td>
+        <td>bloqueado</td>
+        <td><code>{&quot;nome&quot;:&quot;[NOME REMOVIDO]&quot;,&quot;cpf&quot;:&quot;[DOCUMENTO REMOVIDO]&quot;,&quot;email&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;telefone&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;cep&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_logradouro&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_numero&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_bairro&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_ci</code></td>
+      </tr>
+<tr>
+        <td><code>http_response</code></td>
+        <td>não</td>
+        <td>blocked</td>
+        <td>bloqueado</td>
+        <td><code>{&quot;error&quot;:&quot;Conteúdo protegido&quot;,&quot;code&quot;:&quot;PII_BLOCKED&quot;}</code></td>
+      </tr>
+<tr>
+        <td><code>http_response</code></td>
+        <td>sim</td>
+        <td>masked</td>
+        <td>permitido</td>
+        <td><code>{&quot;nome&quot;:&quot;[NOME REMOVIDO]&quot;,&quot;cpf&quot;:&quot;[DOCUMENTO REMOVIDO]&quot;,&quot;email&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;telefone&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;cep&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_logradouro&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_numero&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_bairro&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_ci</code></td>
+      </tr>
+<tr>
+        <td><code>llm_prompt</code></td>
+        <td>não</td>
+        <td>blocked</td>
+        <td>bloqueado</td>
+        <td><code>{&quot;nome&quot;:&quot;[NOME REMOVIDO]&quot;,&quot;cpf&quot;:&quot;[DOCUMENTO REMOVIDO]&quot;,&quot;email&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;telefone&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;cep&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_logradouro&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_numero&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_bairro&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_ci</code></td>
+      </tr>
+<tr>
+        <td><code>database</code></td>
+        <td>não</td>
+        <td>encrypted</td>
+        <td>permitido</td>
+        <td><code>&quot;[ENCRYPTED]&quot;</code></td>
+      </tr>
+<tr>
+        <td><code>export</code></td>
+        <td>não</td>
+        <td>blocked</td>
+        <td>bloqueado</td>
+        <td><code>{&quot;nome&quot;:&quot;[NOME REMOVIDO]&quot;,&quot;cpf&quot;:&quot;[DOCUMENTO REMOVIDO]&quot;,&quot;email&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;telefone&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;cep&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_logradouro&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_numero&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_bairro&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_ci</code></td>
+      </tr>
+<tr>
+        <td><code>error_screen</code></td>
+        <td>não</td>
+        <td>blocked</td>
+        <td>bloqueado</td>
+        <td><code>{&quot;nome&quot;:&quot;[NOME REMOVIDO]&quot;,&quot;cpf&quot;:&quot;[DOCUMENTO REMOVIDO]&quot;,&quot;email&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;telefone&quot;:&quot;[CONTATO REMOVIDO]&quot;,&quot;cep&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_logradouro&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_numero&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_bairro&quot;:&quot;[ENDEREÇO REMOVIDO]&quot;,&quot;endereco_ci</code></td>
+      </tr></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>3. Matriz de risco e farol</h2>
+    <table>
+      <thead><tr><th>Cenário</th><th>Descrição</th><th>Score</th><th>Farol</th></tr></thead>
+      <tbody><tr>
+        <td><strong>safe</strong></td>
+        <td>Nenhum evento</td>
+        <td>0/100</td>
+        <td><span class="badge green">baixo</span></td>
+      </tr>
+<tr>
+        <td><strong>blocked</strong></td>
+        <td>PII crítica bloqueada antes do sink</td>
+        <td>6/100</td>
+        <td><span class="badge green">baixo</span></td>
+      </tr>
+<tr>
+        <td><strong>allowed</strong></td>
+        <td>PII crítica permitida em resposta</td>
+        <td>40/100</td>
+        <td><span class="badge yellow">moderado</span></td>
+      </tr>
+<tr>
+        <td><strong>critical</strong></td>
+        <td>Três exposições críticas permitidas</td>
+        <td>100/100</td>
+        <td><span class="badge red">critico</span></td>
+      </tr></tbody>
+    </table>
+    <p class="note">Farol: verde (0–19), amarelo (20–49), laranja (50–74) e vermelho (75–100). O dashboard usa as mesmas faixas.</p>
+  </section>
+
+  <section>
+    <h2>4. Payload redigido</h2>
+    <pre>{
+  &quot;nome&quot;: &quot;[NOME REMOVIDO]&quot;,
+  &quot;cpf&quot;: &quot;[DOCUMENTO REMOVIDO]&quot;,
+  &quot;email&quot;: &quot;[CONTATO REMOVIDO]&quot;,
+  &quot;telefone&quot;: &quot;[CONTATO REMOVIDO]&quot;,
+  &quot;cep&quot;: &quot;[ENDEREÇO REMOVIDO]&quot;,
+  &quot;endereco_logradouro&quot;: &quot;[ENDEREÇO REMOVIDO]&quot;,
+  &quot;endereco_numero&quot;: &quot;[ENDEREÇO REMOVIDO]&quot;,
+  &quot;endereco_bairro&quot;: &quot;[ENDEREÇO REMOVIDO]&quot;,
+  &quot;endereco_cidade&quot;: &quot;[ENDEREÇO REMOVIDO]&quot;,
+  &quot;endereco_uf&quot;: &quot;[ENDEREÇO REMOVIDO]&quot;,
+  &quot;senha&quot;: &quot;********&quot;,
+  &quot;comentario&quot;: &quot;[DADO DE SAÚDE REMOVIDO]&quot;,
+  &quot;menor_de_idade&quot;: &quot;***&quot;,
+  &quot;responsavel&quot;: &quot;***&quot;
+}</pre>
+  </section>
+
+  <section>
+    <h2>5. Captura do dashboard</h2>
+    <img src="dashboard.png" alt="Dashboard de segurança do TRAJEtória com farol de risco" style="width:100%;border-radius:14px;border:1px solid #e2d8f7;" />
+    <p class="note">Captura gerada por npm run security:dashboard-shot com eventos fictícios. Nenhuma PII bruta é exibida.</p>
+  </section>
+</main>
+<footer>TRAJEtória · evidências geradas automaticamente por <code>npm run security:evidence</code></footer>
+</body>
+</html>

@@ -1,0 +1,1074 @@
+{
+  "generatedAt": "2026-11-13T14:25:45.748Z",
+  "base": "http://127.0.0.1:59789",
+  "demo": {
+    "status": 200,
+    "data": {
+      "ok": true,
+      "scenario": "mixed",
+      "created": 7,
+      "app": "TRAJEtória",
+      "generatedAt": "2026-11-13T14:25:45.724Z",
+      "risk": {
+        "score": 56,
+        "attemptedScore": 100,
+        "level": "alto",
+        "label": "Risco alto",
+        "total": 7,
+        "blocked": 3,
+        "masked": 2,
+        "encrypted": 1,
+        "allowed": 1,
+        "bySeverity": {
+          "low": 1,
+          "medium": 0,
+          "high": 1,
+          "critical": 5
+        },
+        "byCategory": {
+          "identificacao": 0,
+          "contato": 0,
+          "endereco": 0,
+          "credencial": 5,
+          "saude": 1,
+          "menor": 0,
+          "financeiro": 0,
+          "outro": 1
+        },
+        "generatedAt": "2026-11-13T14:25:45.724Z"
+      },
+      "translation": {
+        "message": "Uma tentativa de expor uma senha foi bloqueada antes de chegar aos logs. Nenhuma credencial saiu do sistema.",
+        "provider": "fallback",
+        "model": "local",
+        "cached": false
+      },
+      "events": [
+        {
+          "id": "evt_mwf2kc8q_bj7zzhez",
+          "timestamp": "2026-11-13T14:25:45.722Z",
+          "source": "demo",
+          "sink": "http_response",
+          "action": "allowed",
+          "category": "outro",
+          "severity": "low",
+          "ruleIds": [],
+          "message": "Fluxo seguro: nenhum dado pessoal sensível encontrado.",
+          "metadata": {
+            "scenario": "safe",
+            "context": "demo.safe"
+          },
+          "riskLevel": "baixo"
+        },
+        {
+          "id": "evt_mwf2kc8q_subko7in",
+          "timestamp": "2026-11-13T14:25:45.722Z",
+          "source": "demo",
+          "sink": "llm_prompt",
+          "action": "blocked",
+          "category": "credencial",
+          "severity": "critical",
+          "ruleIds": [
+            "FIELD-nome",
+            "FIELD-cpf",
+            "PII-CPF",
+            "FIELD-email",
+            "PII-EMAIL",
+            "FIELD-telefone",
+            "PII-PHONE",
+            "FIELD-cep",
+            "PII-CEP",
+            "FIELD-endereco_logradouro",
+            "PII-ADDRESS",
+            "FIELD-endereco_numero",
+            "FIELD-endereco_bairro",
+            "FIELD-endereco_cidade",
+            "FIELD-endereco_uf",
+            "FIELD-senha",
+            "FIELD-comentario",
+            "PII-HEALTH",
+            "FIELD-menor_de_idade",
+            "FIELD-responsavel"
+          ],
+          "message": "PII blocked no fluxo de ai (demo.ai).",
+          "maskedValue": "********",
+          "metadata": {
+            "purpose": "ai",
+            "authenticated": false,
+            "context": "demo.ai",
+            "categories": [
+              "identificacao",
+              "contato",
+              "endereco",
+              "credencial",
+              "outro",
+              "saude",
+              "menor"
+            ],
+            "fields": [
+              "nome",
+              "cpf",
+              "email",
+              "telefone",
+              "cep",
+              "endereco_logradouro",
+              "endereco_numero",
+              "endereco_bairro",
+              "endereco_cidade",
+              "endereco_uf",
+              "senha",
+              "comentario",
+              "menor_de_idade",
+              "responsavel"
+            ]
+          },
+          "translated": "Uma tentativa de expor uma senha foi bloqueada antes de chegar aos logs. Nenhuma credencial saiu do sistema.",
+          "riskLevel": "baixo"
+        },
+        {
+          "id": "evt_mwf2kc8q_nqw8v3l2",
+          "timestamp": "2026-11-13T14:25:45.722Z",
+          "source": "demo",
+          "sink": "database",
+          "action": "masked",
+          "category": "saude",
+          "severity": "high",
+          "ruleIds": [
+            "FIELD-comentario",
+            "PII-HEALTH"
+          ],
+          "message": "PII masked no fluxo de feedback (demo.feedback).",
+          "maskedValue": "[DADO DE SAÚDE REMOVIDO]",
+          "metadata": {
+            "purpose": "feedback",
+            "authenticated": false,
+            "context": "demo.feedback",
+            "categories": [
+              "outro",
+              "saude"
+            ],
+            "fields": [
+              "comentario"
+            ]
+          },
+          "riskLevel": "baixo"
+        },
+        {
+          "id": "evt_mwf2kc8q_r897jxhk",
+          "timestamp": "2026-11-13T14:25:45.722Z",
+          "source": "demo",
+          "sink": "database",
+          "action": "encrypted",
+          "category": "credencial",
+          "severity": "critical",
+          "ruleIds": [
+            "FIELD-nome",
+            "FIELD-cpf",
+            "PII-CPF",
+            "FIELD-email",
+            "PII-EMAIL",
+            "FIELD-telefone",
+            "PII-PHONE",
+            "FIELD-cep",
+            "PII-CEP",
+            "FIELD-endereco_logradouro",
+            "PII-ADDRESS",
+            "FIELD-endereco_numero",
+            "FIELD-endereco_bairro",
+            "FIELD-endereco_cidade",
+            "FIELD-endereco_uf",
+            "FIELD-senha",
+            "FIELD-comentario",
+            "PII-HEALTH",
+            "FIELD-menor_de_idade",
+            "FIELD-responsavel"
+          ],
+          "message": "PII encrypted no fluxo de order (demo.order).",
+          "maskedValue": "********",
+          "metadata": {
+            "purpose": "order",
+            "authenticated": false,
+            "context": "demo.order",
+            "categories": [
+              "identificacao",
+              "contato",
+              "endereco",
+              "credencial",
+              "outro",
+              "saude",
+              "menor"
+            ],
+            "fields": [
+              "nome",
+              "cpf",
+              "email",
+              "telefone",
+              "cep",
+              "endereco_logradouro",
+              "endereco_numero",
+              "endereco_bairro",
+              "endereco_cidade",
+              "endereco_uf",
+              "senha",
+              "comentario",
+              "menor_de_idade",
+              "responsavel"
+            ]
+          },
+          "riskLevel": "baixo"
+        },
+        {
+          "id": "evt_mwf2kc8p_cehv7xty",
+          "timestamp": "2026-11-13T14:25:45.721Z",
+          "source": "demo",
+          "sink": "http_response",
+          "action": "masked",
+          "category": "credencial",
+          "severity": "critical",
+          "ruleIds": [
+            "FIELD-nome",
+            "FIELD-cpf",
+            "PII-CPF",
+            "FIELD-email",
+            "PII-EMAIL",
+            "FIELD-telefone",
+            "PII-PHONE",
+            "FIELD-cep",
+            "PII-CEP",
+            "FIELD-endereco_logradouro",
+            "PII-ADDRESS",
+            "FIELD-endereco_numero",
+            "FIELD-endereco_bairro",
+            "FIELD-endereco_cidade",
+            "FIELD-endereco_uf",
+            "FIELD-senha",
+            "FIELD-comentario",
+            "PII-HEALTH",
+            "FIELD-menor_de_idade",
+            "FIELD-responsavel"
+          ],
+          "message": "PII masked no fluxo de response (demo.http.auth).",
+          "maskedValue": "********",
+          "metadata": {
+            "purpose": "response",
+            "authenticated": true,
+            "context": "demo.http.auth",
+            "categories": [
+              "identificacao",
+              "contato",
+              "endereco",
+              "credencial",
+              "outro",
+              "saude",
+              "menor"
+            ],
+            "fields": [
+              "nome",
+              "cpf",
+              "email",
+              "telefone",
+              "cep",
+              "endereco_logradouro",
+              "endereco_numero",
+              "endereco_bairro",
+              "endereco_cidade",
+              "endereco_uf",
+              "senha",
+              "comentario",
+              "menor_de_idade",
+              "responsavel"
+            ]
+          },
+          "riskLevel": "baixo"
+        },
+        {
+          "id": "evt_mwf2kc8o_ycrrf80l",
+          "timestamp": "2026-11-13T14:25:45.720Z",
+          "source": "demo",
+          "sink": "http_response",
+          "action": "blocked",
+          "category": "credencial",
+          "severity": "critical",
+          "ruleIds": [
+            "FIELD-nome",
+            "FIELD-cpf",
+            "PII-CPF",
+            "FIELD-email",
+            "PII-EMAIL",
+            "FIELD-telefone",
+            "PII-PHONE",
+            "FIELD-cep",
+            "PII-CEP",
+            "FIELD-endereco_logradouro",
+            "PII-ADDRESS",
+            "FIELD-endereco_numero",
+            "FIELD-endereco_bairro",
+            "FIELD-endereco_cidade",
+            "FIELD-endereco_uf",
+            "FIELD-senha",
+            "FIELD-comentario",
+            "PII-HEALTH",
+            "FIELD-menor_de_idade",
+            "FIELD-responsavel"
+          ],
+          "message": "PII blocked no fluxo de response (demo.http.public).",
+          "maskedValue": "********",
+          "metadata": {
+            "purpose": "response",
+            "authenticated": false,
+            "context": "demo.http.public",
+            "categories": [
+              "identificacao",
+              "contato",
+              "endereco",
+              "credencial",
+              "outro",
+              "saude",
+              "menor"
+            ],
+            "fields": [
+              "nome",
+              "cpf",
+              "email",
+              "telefone",
+              "cep",
+              "endereco_logradouro",
+              "endereco_numero",
+              "endereco_bairro",
+              "endereco_cidade",
+              "endereco_uf",
+              "senha",
+              "comentario",
+              "menor_de_idade",
+              "responsavel"
+            ]
+          },
+          "riskLevel": "baixo"
+        },
+        {
+          "id": "evt_mwf2kc8n_hrf6r9gp",
+          "timestamp": "2026-11-13T14:25:45.719Z",
+          "source": "demo",
+          "sink": "log",
+          "action": "blocked",
+          "category": "credencial",
+          "severity": "critical",
+          "ruleIds": [
+            "FIELD-nome",
+            "FIELD-cpf",
+            "PII-CPF",
+            "FIELD-email",
+            "PII-EMAIL",
+            "FIELD-telefone",
+            "PII-PHONE",
+            "FIELD-cep",
+            "PII-CEP",
+            "FIELD-endereco_logradouro",
+            "PII-ADDRESS",
+            "FIELD-endereco_numero",
+            "FIELD-endereco_bairro",
+            "FIELD-endereco_cidade",
+            "FIELD-endereco_uf",
+            "FIELD-senha",
+            "FIELD-comentario",
+            "PII-HEALTH",
+            "FIELD-menor_de_idade",
+            "FIELD-responsavel"
+          ],
+          "message": "PII blocked no fluxo de log (demo.log).",
+          "maskedValue": "********",
+          "metadata": {
+            "purpose": "log",
+            "authenticated": false,
+            "context": "demo.log",
+            "categories": [
+              "identificacao",
+              "contato",
+              "endereco",
+              "credencial",
+              "outro",
+              "saude",
+              "menor"
+            ],
+            "fields": [
+              "nome",
+              "cpf",
+              "email",
+              "telefone",
+              "cep",
+              "endereco_logradouro",
+              "endereco_numero",
+              "endereco_bairro",
+              "endereco_cidade",
+              "endereco_uf",
+              "senha",
+              "comentario",
+              "menor_de_idade",
+              "responsavel"
+            ]
+          },
+          "riskLevel": "baixo"
+        }
+      ],
+      "metrics": {
+        "total": 7,
+        "blocked": 3,
+        "masked": 2,
+        "encrypted": 1,
+        "allowed": 1,
+        "bySeverity": {
+          "low": 1,
+          "medium": 0,
+          "high": 1,
+          "critical": 5
+        },
+        "byCategory": {
+          "identificacao": 0,
+          "contato": 0,
+          "endereco": 0,
+          "credencial": 5,
+          "saude": 1,
+          "menor": 0,
+          "financeiro": 0,
+          "outro": 1
+        }
+      },
+      "privacy": {
+        "rawPiiExposed": false,
+        "note": "Nenhuma PII bruta é retornada pelo dashboard. Valores são mascarados ou criptografados.",
+        "retention": "Máximo de 500 eventos; dados fictícios para demonstração."
+      }
+    }
+  },
+  "dashboard": {
+    "status": 200,
+    "data": {
+      "ok": true,
+      "app": "TRAJEtória",
+      "generatedAt": "2026-11-13T14:25:45.733Z",
+      "risk": {
+        "score": 56,
+        "attemptedScore": 100,
+        "level": "alto",
+        "label": "Risco alto",
+        "total": 7,
+        "blocked": 3,
+        "masked": 2,
+        "encrypted": 1,
+        "allowed": 1,
+        "bySeverity": {
+          "low": 1,
+          "medium": 0,
+          "high": 1,
+          "critical": 5
+        },
+        "byCategory": {
+          "identificacao": 0,
+          "contato": 0,
+          "endereco": 0,
+          "credencial": 5,
+          "saude": 1,
+          "menor": 0,
+          "financeiro": 0,
+          "outro": 1
+        },
+        "generatedAt": "2026-11-13T14:25:45.733Z"
+      },
+      "translation": {
+        "message": "Uma tentativa de expor uma senha foi bloqueada antes de chegar aos logs. Nenhuma credencial saiu do sistema.",
+        "provider": "fallback",
+        "model": "local",
+        "cached": true
+      },
+      "events": [
+        {
+          "id": "evt_mwf2kc8q_bj7zzhez",
+          "timestamp": "2026-11-13T14:25:45.722Z",
+          "source": "demo",
+          "sink": "http_response",
+          "action": "allowed",
+          "category": "outro",
+          "severity": "low",
+          "ruleIds": [],
+          "message": "Fluxo seguro: nenhum dado pessoal sensível encontrado.",
+          "metadata": {
+            "scenario": "safe",
+            "context": "demo.safe"
+          },
+          "riskLevel": "baixo"
+        },
+        {
+          "id": "evt_mwf2kc8q_subko7in",
+          "timestamp": "2026-11-13T14:25:45.722Z",
+          "source": "demo",
+          "sink": "llm_prompt",
+          "action": "blocked",
+          "category": "credencial",
+          "severity": "critical",
+          "ruleIds": [
+            "FIELD-nome",
+            "FIELD-cpf",
+            "PII-CPF",
+            "FIELD-email",
+            "PII-EMAIL",
+            "FIELD-telefone",
+            "PII-PHONE",
+            "FIELD-cep",
+            "PII-CEP",
+            "FIELD-endereco_logradouro",
+            "PII-ADDRESS",
+            "FIELD-endereco_numero",
+            "FIELD-endereco_bairro",
+            "FIELD-endereco_cidade",
+            "FIELD-endereco_uf",
+            "FIELD-senha",
+            "FIELD-comentario",
+            "PII-HEALTH",
+            "FIELD-menor_de_idade",
+            "FIELD-responsavel"
+          ],
+          "message": "PII blocked no fluxo de ai (demo.ai).",
+          "maskedValue": "********",
+          "metadata": {
+            "purpose": "ai",
+            "authenticated": false,
+            "context": "demo.ai",
+            "categories": [
+              "identificacao",
+              "contato",
+              "endereco",
+              "credencial",
+              "outro",
+              "saude",
+              "menor"
+            ],
+            "fields": [
+              "nome",
+              "cpf",
+              "email",
+              "telefone",
+              "cep",
+              "endereco_logradouro",
+              "endereco_numero",
+              "endereco_bairro",
+              "endereco_cidade",
+              "endereco_uf",
+              "senha",
+              "comentario",
+              "menor_de_idade",
+              "responsavel"
+            ]
+          },
+          "translated": "Uma tentativa de expor uma senha foi bloqueada antes de chegar aos logs. Nenhuma credencial saiu do sistema.",
+          "riskLevel": "baixo"
+        },
+        {
+          "id": "evt_mwf2kc8q_nqw8v3l2",
+          "timestamp": "2026-11-13T14:25:45.722Z",
+          "source": "demo",
+          "sink": "database",
+          "action": "masked",
+          "category": "saude",
+          "severity": "high",
+          "ruleIds": [
+            "FIELD-comentario",
+            "PII-HEALTH"
+          ],
+          "message": "PII masked no fluxo de feedback (demo.feedback).",
+          "maskedValue": "[DADO DE SAÚDE REMOVIDO]",
+          "metadata": {
+            "purpose": "feedback",
+            "authenticated": false,
+            "context": "demo.feedback",
+            "categories": [
+              "outro",
+              "saude"
+            ],
+            "fields": [
+              "comentario"
+            ]
+          },
+          "riskLevel": "baixo"
+        },
+        {
+          "id": "evt_mwf2kc8q_r897jxhk",
+          "timestamp": "2026-11-13T14:25:45.722Z",
+          "source": "demo",
+          "sink": "database",
+          "action": "encrypted",
+          "category": "credencial",
+          "severity": "critical",
+          "ruleIds": [
+            "FIELD-nome",
+            "FIELD-cpf",
+            "PII-CPF",
+            "FIELD-email",
+            "PII-EMAIL",
+            "FIELD-telefone",
+            "PII-PHONE",
+            "FIELD-cep",
+            "PII-CEP",
+            "FIELD-endereco_logradouro",
+            "PII-ADDRESS",
+            "FIELD-endereco_numero",
+            "FIELD-endereco_bairro",
+            "FIELD-endereco_cidade",
+            "FIELD-endereco_uf",
+            "FIELD-senha",
+            "FIELD-comentario",
+            "PII-HEALTH",
+            "FIELD-menor_de_idade",
+            "FIELD-responsavel"
+          ],
+          "message": "PII encrypted no fluxo de order (demo.order).",
+          "maskedValue": "********",
+          "metadata": {
+            "purpose": "order",
+            "authenticated": false,
+            "context": "demo.order",
+            "categories": [
+              "identificacao",
+              "contato",
+              "endereco",
+              "credencial",
+              "outro",
+              "saude",
+              "menor"
+            ],
+            "fields": [
+              "nome",
+              "cpf",
+              "email",
+              "telefone",
+              "cep",
+              "endereco_logradouro",
+              "endereco_numero",
+              "endereco_bairro",
+              "endereco_cidade",
+              "endereco_uf",
+              "senha",
+              "comentario",
+              "menor_de_idade",
+              "responsavel"
+            ]
+          },
+          "riskLevel": "baixo"
+        },
+        {
+          "id": "evt_mwf2kc8p_cehv7xty",
+          "timestamp": "2026-11-13T14:25:45.721Z",
+          "source": "demo",
+          "sink": "http_response",
+          "action": "masked",
+          "category": "credencial",
+          "severity": "critical",
+          "ruleIds": [
+            "FIELD-nome",
+            "FIELD-cpf",
+            "PII-CPF",
+            "FIELD-email",
+            "PII-EMAIL",
+            "FIELD-telefone",
+            "PII-PHONE",
+            "FIELD-cep",
+            "PII-CEP",
+            "FIELD-endereco_logradouro",
+            "PII-ADDRESS",
+            "FIELD-endereco_numero",
+            "FIELD-endereco_bairro",
+            "FIELD-endereco_cidade",
+            "FIELD-endereco_uf",
+            "FIELD-senha",
+            "FIELD-comentario",
+            "PII-HEALTH",
+            "FIELD-menor_de_idade",
+            "FIELD-responsavel"
+          ],
+          "message": "PII masked no fluxo de response (demo.http.auth).",
+          "maskedValue": "********",
+          "metadata": {
+            "purpose": "response",
+            "authenticated": true,
+            "context": "demo.http.auth",
+            "categories": [
+              "identificacao",
+              "contato",
+              "endereco",
+              "credencial",
+              "outro",
+              "saude",
+              "menor"
+            ],
+            "fields": [
+              "nome",
+              "cpf",
+              "email",
+              "telefone",
+              "cep",
+              "endereco_logradouro",
+              "endereco_numero",
+              "endereco_bairro",
+              "endereco_cidade",
+              "endereco_uf",
+              "senha",
+              "comentario",
+              "menor_de_idade",
+              "responsavel"
+            ]
+          },
+          "riskLevel": "baixo"
+        },
+        {
+          "id": "evt_mwf2kc8o_ycrrf80l",
+          "timestamp": "2026-11-13T14:25:45.720Z",
+          "source": "demo",
+          "sink": "http_response",
+          "action": "blocked",
+          "category": "credencial",
+          "severity": "critical",
+          "ruleIds": [
+            "FIELD-nome",
+            "FIELD-cpf",
+            "PII-CPF",
+            "FIELD-email",
+            "PII-EMAIL",
+            "FIELD-telefone",
+            "PII-PHONE",
+            "FIELD-cep",
+            "PII-CEP",
+            "FIELD-endereco_logradouro",
+            "PII-ADDRESS",
+            "FIELD-endereco_numero",
+            "FIELD-endereco_bairro",
+            "FIELD-endereco_cidade",
+            "FIELD-endereco_uf",
+            "FIELD-senha",
+            "FIELD-comentario",
+            "PII-HEALTH",
+            "FIELD-menor_de_idade",
+            "FIELD-responsavel"
+          ],
+          "message": "PII blocked no fluxo de response (demo.http.public).",
+          "maskedValue": "********",
+          "metadata": {
+            "purpose": "response",
+            "authenticated": false,
+            "context": "demo.http.public",
+            "categories": [
+              "identificacao",
+              "contato",
+              "endereco",
+              "credencial",
+              "outro",
+              "saude",
+              "menor"
+            ],
+            "fields": [
+              "nome",
+              "cpf",
+              "email",
+              "telefone",
+              "cep",
+              "endereco_logradouro",
+              "endereco_numero",
+              "endereco_bairro",
+              "endereco_cidade",
+              "endereco_uf",
+              "senha",
+              "comentario",
+              "menor_de_idade",
+              "responsavel"
+            ]
+          },
+          "riskLevel": "baixo"
+        },
+        {
+          "id": "evt_mwf2kc8n_hrf6r9gp",
+          "timestamp": "2026-11-13T14:25:45.719Z",
+          "source": "demo",
+          "sink": "log",
+          "action": "blocked",
+          "category": "credencial",
+          "severity": "critical",
+          "ruleIds": [
+            "FIELD-nome",
+            "FIELD-cpf",
+            "PII-CPF",
+            "FIELD-email",
+            "PII-EMAIL",
+            "FIELD-telefone",
+            "PII-PHONE",
+            "FIELD-cep",
+            "PII-CEP",
+            "FIELD-endereco_logradouro",
+            "PII-ADDRESS",
+            "FIELD-endereco_numero",
+            "FIELD-endereco_bairro",
+            "FIELD-endereco_cidade",
+            "FIELD-endereco_uf",
+            "FIELD-senha",
+            "FIELD-comentario",
+            "PII-HEALTH",
+            "FIELD-menor_de_idade",
+            "FIELD-responsavel"
+          ],
+          "message": "PII blocked no fluxo de log (demo.log).",
+          "maskedValue": "********",
+          "metadata": {
+            "purpose": "log",
+            "authenticated": false,
+            "context": "demo.log",
+            "categories": [
+              "identificacao",
+              "contato",
+              "endereco",
+              "credencial",
+              "outro",
+              "saude",
+              "menor"
+            ],
+            "fields": [
+              "nome",
+              "cpf",
+              "email",
+              "telefone",
+              "cep",
+              "endereco_logradouro",
+              "endereco_numero",
+              "endereco_bairro",
+              "endereco_cidade",
+              "endereco_uf",
+              "senha",
+              "comentario",
+              "menor_de_idade",
+              "responsavel"
+            ]
+          },
+          "riskLevel": "baixo"
+        }
+      ],
+      "metrics": {
+        "total": 7,
+        "blocked": 3,
+        "masked": 2,
+        "encrypted": 1,
+        "allowed": 1,
+        "bySeverity": {
+          "low": 1,
+          "medium": 0,
+          "high": 1,
+          "critical": 5
+        },
+        "byCategory": {
+          "identificacao": 0,
+          "contato": 0,
+          "endereco": 0,
+          "credencial": 5,
+          "saude": 1,
+          "menor": 0,
+          "financeiro": 0,
+          "outro": 1
+        }
+      },
+      "privacy": {
+        "rawPiiExposed": false,
+        "note": "Nenhuma PII bruta é retornada pelo dashboard. Valores são mascarados ou criptografados.",
+        "retention": "Máximo de 500 eventos; dados fictícios para demonstração."
+      }
+    }
+  },
+  "scan": {
+    "status": 200,
+    "data": {
+      "ok": true,
+      "purpose": "log",
+      "containsPii": true,
+      "blocked": true,
+      "action": "blocked",
+      "findings": [
+        {
+          "ruleId": "FIELD-cpf",
+          "ruleName": "CPF",
+          "category": "identificacao",
+          "severity": "high",
+          "action": "masked",
+          "field": "cpf",
+          "path": "cpf",
+          "maskedMatch": "[DOCUMENTO REMOVIDO]",
+          "message": "CPF mapeado como PII (identificacao).",
+          "metadata": {
+            "fieldMapping": true
+          }
+        },
+        {
+          "ruleId": "PII-CPF",
+          "ruleName": "CPF",
+          "category": "identificacao",
+          "severity": "high",
+          "action": "masked",
+          "field": "cpf",
+          "path": "cpf",
+          "start": 0,
+          "end": 14,
+          "maskedMatch": "***.***.***-**",
+          "message": "CPF detectado.",
+          "metadata": {
+            "validated": true
+          }
+        },
+        {
+          "ruleId": "FIELD-senha",
+          "ruleName": "Senha",
+          "category": "credencial",
+          "severity": "critical",
+          "action": "blocked",
+          "field": "senha",
+          "path": "senha",
+          "maskedMatch": "********",
+          "message": "Senha mapeado como PII (credencial).",
+          "metadata": {
+            "fieldMapping": true
+          }
+        }
+      ],
+      "sanitized": {
+        "cpf": "[DOCUMENTO REMOVIDO]",
+        "senha": "********"
+      },
+      "risk": {
+        "score": 62,
+        "attemptedScore": 100,
+        "level": "alto",
+        "label": "Risco alto",
+        "total": 8,
+        "blocked": 4,
+        "masked": 2,
+        "encrypted": 1,
+        "allowed": 1,
+        "bySeverity": {
+          "low": 1,
+          "medium": 0,
+          "high": 1,
+          "critical": 6
+        },
+        "byCategory": {
+          "identificacao": 0,
+          "contato": 0,
+          "endereco": 0,
+          "credencial": 6,
+          "saude": 1,
+          "menor": 0,
+          "financeiro": 0,
+          "outro": 1
+        },
+        "generatedAt": "2026-11-13T14:25:45.738Z"
+      }
+    }
+  },
+  "order": {
+    "status": 201,
+    "data": {
+      "ok": true,
+      "order": {
+        "id": 1,
+        "status": "solicitado",
+        "createdAt": "2026-11-13T14:25:45.744Z",
+        "items": [
+          "1"
+        ],
+        "pii": {
+          "young": {
+            "nome": "[NOME REMOVIDO]",
+            "cpf": "[DOCUMENTO REMOVIDO]"
+          },
+          "address": {
+            "cep": "[ENDEREÇO REMOVIDO]",
+            "logradouro": "[ENDEREÇO REMOVIDO]",
+            "numero": "[ENDEREÇO REMOVIDO]",
+            "complemento": "[ENDEREÇO REMOVIDO]",
+            "bairro": "[ENDEREÇO REMOVIDO]",
+            "cidade": "[ENDEREÇO REMOVIDO]",
+            "uf": "[ENDEREÇO REMOVIDO]",
+            "contato": "[CONTATO REMOVIDO]"
+          }
+        },
+        "privacy": {
+          "encryptedAtRest": true,
+          "rawPiiReturned": false
+        }
+      },
+      "risk": {
+        "score": 68,
+        "attemptedScore": 100,
+        "level": "alto",
+        "label": "Risco alto",
+        "total": 9,
+        "blocked": 4,
+        "masked": 2,
+        "encrypted": 2,
+        "allowed": 1,
+        "bySeverity": {
+          "low": 1,
+          "medium": 0,
+          "high": 2,
+          "critical": 6
+        },
+        "byCategory": {
+          "identificacao": 1,
+          "contato": 0,
+          "endereco": 0,
+          "credencial": 6,
+          "saude": 1,
+          "menor": 0,
+          "financeiro": 0,
+          "outro": 1
+        },
+        "generatedAt": "2026-11-13T14:25:45.744Z"
+      }
+    }
+  },
+  "feedback": {
+    "status": 200,
+    "data": {
+      "ok": true,
+      "orderId": 1,
+      "comment": "[DADO DE SAÚDE REMOVIDO]",
+      "answers": {
+        "1": true
+      },
+      "piiRemoved": true,
+      "risk": {
+        "score": 77,
+        "attemptedScore": 100,
+        "level": "critico",
+        "label": "Risco crítico",
+        "total": 10,
+        "blocked": 4,
+        "masked": 3,
+        "encrypted": 2,
+        "allowed": 1,
+        "bySeverity": {
+          "low": 1,
+          "medium": 0,
+          "high": 3,
+          "critical": 6
+        },
+        "byCategory": {
+          "identificacao": 1,
+          "contato": 0,
+          "endereco": 0,
+          "credencial": 6,
+          "saude": 2,
+          "menor": 0,
+          "financeiro": 0,
+          "outro": 1
+        },
+        "generatedAt": "2026-11-13T14:25:45.748Z"
+      }
+    }
+  },
+  "privacy": {
+    "rawPiiExposed": false,
+    "note": "Evidência gerada com dados fictícios e resultados sanitizados."
+  }
+}
