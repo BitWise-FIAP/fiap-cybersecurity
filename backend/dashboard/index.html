@@ -134,7 +134,8 @@
           <p class="muted">
             Os dados são fictícios. O backend aplica parsing de PII, bloqueia
             vazamentos em logs e respostas públicas, criptografa antes de
-            armazenar e envia apenas o evento sanitizado para a IA.
+            armazenar e envia apenas o evento sanitizado para a IA. Cada
+            simulação substitui os eventos anteriores do painel.
           </p>
           <div class="demo-actions">
             <button id="demo-leak" class="btn btn-danger" type="button">
@@ -145,6 +146,9 @@
             </button>
             <button id="demo-mixed" class="btn btn-primary" type="button">
               Simular cenário completo
+            </button>
+            <button id="demo-critical" class="btn btn-critical" type="button">
+              Simular exposição crítica
             </button>
           </div>
           <p class="privacy">

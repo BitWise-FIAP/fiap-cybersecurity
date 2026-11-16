@@ -9,8 +9,8 @@
 > **Público beneficiado:** jovens indicados/validados pelas ONGs parceiras.  
 > **Jornada apresentada:** acesso → consentimento → catálogo → detalhes → seleção → endereço → envio → acompanhamento → feedback.  
 > **Diferencial:** peças selecionadas gratuitamente, conforme tamanhos cadastrados, com reserva e histórico de entrega.  
-> **Equipe e RMs:** **[PREENCHER antes da entrega]**.  
-> **Turma:** **[PREENCHER]**.  
+> **Equipe e RMs:** Pedro Gaspar Fernandes Ferrari (RM 554887), Victor Freire (RM 556191) e Enrico Ricarte Rodrigues (RM 558571).  
+> **Turma:** 3ESPH.  
 > **Data:** novembro de 2026.  
 > **Base de dados:** dados e imagens de demonstração; não há dados pessoais reais.
 
@@ -132,7 +132,7 @@ Esta versão inclui a entrega de **Cybersecurity** do projeto oficial TRAJEtóri
 - Dashboard: `http://localhost:3333/dashboard` após `npm run security:start`
 
 ```powershell
-npm run security:test       # 33 testes automatizados
+npm run security:test       # 34 testes automatizados
 npm run security:audit      # taint analysis estática
 npm run security:demo       # simulação end-to-end
 npm run security:evidence   # evidências JSON/HTML
@@ -141,14 +141,15 @@ npm run security:pdf        # relatório e evidências em PDF
 npm run security:zip        # pacote final de código
 ```
 
-Os dados de demonstração são fictícios. Nenhuma PII bruta é gravada nas evidências ou retornada pelo dashboard.
+O dashboard tem quatro simulações (vazamento, fluxo seguro, cenário completo e exposição crítica). Cada clique substitui os eventos anteriores, então o farol reflete apenas o cenário escolhido; a exposição crítica leva o score a 100. Os dados de demonstração são fictícios. Nenhuma PII bruta é gravada nas evidências ou retornada pelo dashboard.
 
 ## Entregáveis FIAP ainda a completar
 
-- [ ] Preencher nomes, RMs e turma da equipe no topo deste README.
+- [x] Nomes, RMs e turma da equipe preenchidos no topo deste README.
 - [ ] Executar e testar no Expo Go/emulador, inclusive as telas pequenas.
 - [ ] Tirar **prints reais** do aplicativo rodando e inserir no README.
 - [ ] Gravar vídeo **de até 3 minutos**, publicar no YouTube como **não listado** e inserir link no README.
+- [ ] Gravar o vídeo de Cybersecurity mostrando o dashboard e o indicador de **Risco Cidadão**.
 - [ ] Publicar em repositório GitHub público ou conceder acesso ao professor.
 - [ ] Enviar link do repositório no Teams por **um integrante** até **19/11/2026 às 23h55**.
 

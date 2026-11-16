@@ -215,7 +215,7 @@ function main(): void {
   md.push('');
   md.push('**Entrega:** 19/11/2026');
   md.push('');
-  md.push('**Integrantes:** [preencher nome completo e RM de cada integrante]');
+  md.push('**Integrantes:** Pedro Gaspar Fernandes Ferrari (RM 554887), Victor Freire (RM 556191) e Enrico Ricarte Rodrigues (RM 558571) · **Turma:** 3ESPH');
   md.push('');
   md.push('---');
   md.push('');
@@ -235,7 +235,7 @@ function main(): void {
       ['Riscos aceitos e documentados', String(taint.summary.acceptedRisk)],
       ['Sinks sem proteção', String(taint.summary.unprotected)],
       ['Risco residual estático', taint.summary.residualRisk],
-      ['Testes automatizados', '33 testes aprovados'],
+      ['Testes automatizados', '34 testes aprovados'],
     ],
   ));
   md.push('');
@@ -367,6 +367,7 @@ function main(): void {
   md.push('- Distribuição por severidade e categoria.');
   md.push('- Últimos eventos sanitizados com tradução em linguagem simples.');
   md.push('- Aviso explícito de que nenhuma PII bruta é retornada.');
+  md.push('- Quatro simulações (vazamento, fluxo seguro, cenário completo e exposição crítica). Cada clique substitui os eventos anteriores, então o farol reflete apenas o cenário escolhido; a exposição crítica leva o score a 100.');
   md.push('');
   md.push('A captura do dashboard é gerada por npm run security:dashboard-shot e salva em docs/cybersecurity/evidencias/dashboard.png.');
   md.push('');
@@ -406,7 +407,7 @@ function main(): void {
   md.push('- dashboard.png — captura do dashboard.');
   md.push('- demo-result.json — resultado da simulação end-to-end.');
   md.push('');
-  md.push('Resultado dos testes: **33 testes aprovados**, cobrindo PII, taint, risco, criptografia, tradutor e servidor HTTP.');
+  md.push('Resultado dos testes: **34 testes aprovados**, cobrindo PII, taint, risco, criptografia, tradutor e servidor HTTP.');
   md.push('');
   md.push('## 11. Riscos residuais e melhorias');
   md.push('');
@@ -444,7 +445,7 @@ function main(): void {
   md.push('- [x] Evidências JSON/HTML e captura do dashboard.');
   md.push('- [x] Relatório em Markdown/HTML.');
   md.push('- [x] PDF final e ZIP de código.');
-  md.push('- [ ] Preencher nomes e RMs dos integrantes.');
+  md.push('- [x] Nomes, RMs e turma preenchidos.');
   md.push('');
   md.push('## 14. Referências');
   md.push('');
@@ -549,7 +550,8 @@ function renderReportHtml(data: {
     <div><strong>Projeto</strong> TRAJEtória — moda circular para jovens</div>
     <div><strong>Disciplina</strong> Cybersecurity</div>
     <div><strong>Entrega</strong> 19/11/2026</div>
-    <div><strong>Integrantes</strong> [preencher nome completo e RM]</div>
+    <div><strong>Integrantes</strong><br/>Pedro Gaspar Fernandes Ferrari (RM 554887)<br/>Victor Freire (RM 556191)<br/>Enrico Ricarte Rodrigues (RM 558571)</div>
+    <div><strong>Turma</strong> 3ESPH</div>
   </div>
   <div class="seal">🔒 PII protegida · farol de risco · evidências sanitizadas</div>
 </div>
@@ -657,6 +659,7 @@ function renderReportHtml(data: {
   <section>
     <h2>8. Dashboard web com farol de risco</h2>
     <p>O dashboard fica em <code>/dashboard</code> e é servido pelo backend. Ele exibe farol verde (0–19), amarelo (20–49), laranja (50–74) e vermelho (75–100), score de risco, eventos bloqueados, mascarados, criptografados e permitidos, distribuição por severidade/categoria, últimos eventos sanitizados e tradução em linguagem simples.</p>
+    <p>O painel oferece quatro simulações (tentativa de vazamento, fluxo seguro, cenário completo e exposição crítica). Cada clique substitui os eventos anteriores, então o farol reflete apenas o cenário escolhido; a exposição crítica leva o score a 100.</p>
     ${htmlTable(['Cenário', 'Descrição', 'Score', 'Farol'], data.riskRows)}
     <figure>
       <img src="evidencias/dashboard.png" alt="Dashboard de segurança do TRAJEtória com farol de risco" style="width:100%;border-radius:14px;border:1px solid #e2d8f7;margin:12px 0;" />
@@ -676,7 +679,7 @@ function renderReportHtml(data: {
 
   <section>
     <h2>10. Evidências e testes</h2>
-    <p>Resultado dos testes: <strong>33 testes aprovados</strong>, cobrindo PII, taint, risco, criptografia, tradutor e servidor HTTP.</p>
+    <p>Resultado dos testes: <strong>34 testes aprovados</strong>, cobrindo PII, taint, risco, criptografia, tradutor e servidor HTTP.</p>
     <pre>npm run security:build
 npm run security:test
 npm run security:audit
@@ -727,7 +730,7 @@ npm run security:start</pre>
       <li>☑ Evidências JSON/HTML e captura do dashboard.</li>
       <li>☑ Relatório em Markdown/HTML.</li>
       <li>☑ PDF final e ZIP de código.</li>
-      <li>☐ Preencher nomes e RMs dos integrantes.</li>
+      <li>☑ Nomes, RMs e turma preenchidos.</li>
     </ul>
   </section>
 

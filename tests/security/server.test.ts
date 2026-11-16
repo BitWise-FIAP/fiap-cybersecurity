@@ -86,6 +86,43 @@ test('dashboard público retorna apenas dados sanitizados', async () => {
   assert.ok(data.events.length > 0);
 });
 
+test('cada simulação substitui os eventos e o cenário crítico satura o risco', async () => {
+  const leak = await fetch(`${base}/api/security/demo`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ scenario: 'leak' }),
+  });
+  assert.equal(leak.status, 200);
+  const leakData = (await leak.json()) as { risk: { level: string } };
+  assert.ok(leakData.risk.level === 'alto' || leakData.risk.level === 'critico');
+
+  const safe = await fetch(`${base}/api/security/demo`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ scenario: 'safe' }),
+  });
+  assert.equal(safe.status, 200);
+  const safeData = (await safe.json()) as {
+    risk: { total: number; score: number; level: string };
+  };
+  assert.equal(safeData.risk.total, 1);
+  assert.equal(safeData.risk.level, 'baixo');
+  assert.ok(safeData.risk.score < 20);
+
+  const critical = await fetch(`${base}/api/security/demo`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ scenario: 'critical' }),
+  });
+  assert.equal(critical.status, 200);
+  const criticalData = (await critical.json()) as {
+    risk: { score: number; level: string; allowed: number };
+  };
+  assert.equal(criticalData.risk.score, 100);
+  assert.equal(criticalData.risk.level, 'critico');
+  assert.equal(criticalData.risk.allowed, 3);
+});
+
 test('eventos exigem token de demonstração', async () => {
   const unauthorizedResponse = await fetch(`${base}/api/security/events`);
   assert.equal(unauthorizedResponse.status, 401);

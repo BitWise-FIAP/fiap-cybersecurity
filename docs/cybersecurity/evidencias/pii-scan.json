@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T14:30:11.974Z",
+  "generatedAt": "2026-11-16T13:54:28.425Z",
   "fixture": "payload fictício com nome, CPF, e-mail, telefone, endereço, senha, saúde e menor de idade",
   "containsPii": true,
   "highestSeverity": "critical",

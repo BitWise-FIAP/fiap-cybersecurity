@@ -52,6 +52,7 @@ const elements = {
   demoLeak: document.getElementById('demo-leak'),
   demoSafe: document.getElementById('demo-safe'),
   demoMixed: document.getElementById('demo-mixed'),
+  demoCritical: document.getElementById('demo-critical'),
 };
 
 let busy = false;
@@ -64,7 +65,13 @@ function setStatus(message, kind) {
 
 function setBusy(value) {
   busy = value;
-  for (const button of [elements.refresh, elements.demoLeak, elements.demoSafe, elements.demoMixed]) {
+  for (const button of [
+    elements.refresh,
+    elements.demoLeak,
+    elements.demoSafe,
+    elements.demoMixed,
+    elements.demoCritical,
+  ]) {
     button.disabled = value;
   }
 }
@@ -104,7 +111,7 @@ async function runDemo(scenario) {
     const data = await fetchJson('/api/security/demo', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ scenario }),
+      body: JSON.stringify({ scenario, reset: true }),
     });
     render(data);
     const label =
@@ -112,9 +119,11 @@ async function runDemo(scenario) {
         ? 'tentativa de vazamento'
         : scenario === 'safe'
           ? 'fluxo seguro'
-          : 'cenário completo';
+          : scenario === 'critical'
+            ? 'exposição crítica'
+            : 'cenário completo';
     setStatus(
-      `Simulação concluída: ${label}. ${data.created} evento(s) tratado(s) sem expor PII bruta.`,
+      `Simulação concluída: ${label}. ${data.created} evento(s) tratado(s) sem expor PII bruta. Painel substituído.`,
       'success',
     );
   } catch (error) {
@@ -257,6 +266,7 @@ elements.refresh.addEventListener('click', refresh);
 elements.demoLeak.addEventListener('click', () => runDemo('leak'));
 elements.demoSafe.addEventListener('click', () => runDemo('safe'));
 elements.demoMixed.addEventListener('click', () => runDemo('mixed'));
+elements.demoCritical.addEventListener('click', () => runDemo('critical'));
 
 refresh();
 setInterval(() => {

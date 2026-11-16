@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T14:30:11.978Z",
+  "generatedAt": "2026-11-16T13:54:28.429Z",
   "source": "form",
   "fixture": "payload fictício (não persistido)",
   "traces": [
@@ -1206,8 +1206,8 @@
   ],
   "events": [
     {
-      "id": "evt_mwf2q1oo_4y2suikv",
-      "timestamp": "2026-11-13T14:30:11.976Z",
+      "id": "evt_mwjbrnpn_1kagl6a5",
+      "timestamp": "2026-11-16T13:54:28.427Z",
       "source": "form",
       "sink": "console",
       "action": "blocked",
@@ -1252,8 +1252,8 @@
       }
     },
     {
-      "id": "evt_mwf2q1oo_14wuu2mn",
-      "timestamp": "2026-11-13T14:30:11.976Z",
+      "id": "evt_mwjbrnpn_3avrpkwu",
+      "timestamp": "2026-11-16T13:54:28.428Z",
       "source": "form",
       "sink": "log",
       "action": "blocked",
@@ -1298,8 +1298,8 @@
       }
     },
     {
-      "id": "evt_mwf2q1oo_1d3bzj5x",
-      "timestamp": "2026-11-13T14:30:11.976Z",
+      "id": "evt_mwjbrnpo_2139ups4",
+      "timestamp": "2026-11-16T13:54:28.428Z",
       "source": "form",
       "sink": "http_response",
       "action": "blocked",
@@ -1344,8 +1344,8 @@
       }
     },
     {
-      "id": "evt_mwf2q1op_edkru619",
-      "timestamp": "2026-11-13T14:30:11.977Z",
+      "id": "evt_mwjbrnpo_milgtduf",
+      "timestamp": "2026-11-16T13:54:28.428Z",
       "source": "form",
       "sink": "http_response",
       "action": "masked",
@@ -1390,8 +1390,8 @@
       }
     },
     {
-      "id": "evt_mwf2q1op_mi16lyu9",
-      "timestamp": "2026-11-13T14:30:11.977Z",
+      "id": "evt_mwjbrnpo_pb51nuot",
+      "timestamp": "2026-11-16T13:54:28.428Z",
       "source": "form",
       "sink": "llm_prompt",
       "action": "blocked",
@@ -1436,8 +1436,8 @@
       }
     },
     {
-      "id": "evt_mwf2q1oq_uh2zgllb",
-      "timestamp": "2026-11-13T14:30:11.978Z",
+      "id": "evt_mwjbrnpp_zq0nlfcn",
+      "timestamp": "2026-11-16T13:54:28.429Z",
       "source": "form",
       "sink": "database",
       "action": "encrypted",
@@ -1482,8 +1482,8 @@
       }
     },
     {
-      "id": "evt_mwf2q1oq_ze26tzzm",
-      "timestamp": "2026-11-13T14:30:11.978Z",
+      "id": "evt_mwjbrnpp_n6np84u5",
+      "timestamp": "2026-11-16T13:54:28.429Z",
       "source": "form",
       "sink": "export",
       "action": "blocked",
@@ -1528,8 +1528,8 @@
       }
     },
     {
-      "id": "evt_mwf2q1oq_8pnwwzbv",
-      "timestamp": "2026-11-13T14:30:11.978Z",
+      "id": "evt_mwjbrnpp_3aho9fyg",
+      "timestamp": "2026-11-16T13:54:28.429Z",
       "source": "form",
       "sink": "error_screen",
       "action": "blocked",
@@ -1600,7 +1600,7 @@
       "financeiro": 0,
       "outro": 0
     },
-    "generatedAt": "2026-11-13T14:30:11.978Z"
+    "generatedAt": "2026-11-16T13:54:28.429Z"
   },
   "privacy": {
     "rawPiiExposed": false,

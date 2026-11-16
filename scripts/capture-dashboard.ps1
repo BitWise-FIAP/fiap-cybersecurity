@@ -19,15 +19,13 @@ if (-not $browser) {
 
 New-Item -ItemType Directory -Path $evidence -Force | Out-Null
 
-if (-not (Test-Path -LiteralPath $serverEntry)) {
-  Write-Host "[security:dashboard-shot] compilando backend..."
-  Push-Location $root
-  try {
-    & npm run security:build
-    if ($LASTEXITCODE -ne 0) { throw "Falha no build do backend." }
-  } finally {
-    Pop-Location
-  }
+Write-Host "[security:dashboard-shot] compilando backend..."
+Push-Location $root
+try {
+  & npm run security:build
+  if ($LASTEXITCODE -ne 0) { throw "Falha no build do backend." }
+} finally {
+  Pop-Location
 }
 
 $port = Get-Random -Minimum 3400 -Maximum 3999

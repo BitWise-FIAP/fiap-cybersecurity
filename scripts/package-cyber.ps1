@@ -20,11 +20,21 @@ function Copy-IfExists([string]$relative) {
 
 Write-Host "[security:zip] preparando pacote..."
 
-foreach ($directory in @("app", "src", "backend", "scripts", "tests")) {
+foreach ($directory in @("app", "assets", "database", "src", "backend", "scripts", "tests")) {
   Copy-IfExists $directory
 }
 
 Copy-IfExists "docs\cybersecurity"
+
+foreach ($internalDoc in @(
+  "docs\cybersecurity\CHECKLIST_ENTREGA.md",
+  "docs\cybersecurity\ROTEIRO_VIDEO.md"
+)) {
+  $stagedDoc = Join-Path $staging $internalDoc
+  if (Test-Path -LiteralPath $stagedDoc) {
+    Remove-Item -LiteralPath $stagedDoc -Force
+  }
+}
 
 foreach ($file in @(
   "package.json",
@@ -34,6 +44,8 @@ foreach ($file in @(
   ".env.example",
   ".gitignore",
   "README.md",
+  "CORRECAO_DEPENDENCIAS.md",
+  "MANIFESTO_ENTREGA.json",
   "app.json",
   "babel.config.js",
   "metro.config.js",
@@ -60,9 +72,10 @@ FIAP Global Solution 2026.2 · Cybersecurity · CitizenTech TRAJEtória.
 ## Conteúdo
 
 - app/ — aplicativo Expo/React Native (integração mínima de segurança).
+- assets/ e database/ — dados fictícios de demonstração e schema SQLite.
 - src/security/ — catálogo de PII, mascaramento, risco e taint analysis.
 - backend/ — servidor Node/TypeScript, middlewares de PII, criptografia, tradutor e dashboard.
-- tests/security/ — 33 testes automatizados.
+- tests/security/ — 34 testes automatizados.
 - scripts/ — geração de evidências, relatório, PDF, captura e ZIP.
 - docs/cybersecurity/ — relatório, evidências e PDFs.
 
@@ -76,10 +89,13 @@ npm run security:demo
 npm run security:evidence
 npm run security:report
 npm run security:pdf
+npm run security:dashboard-shot
 npm run security:start
 ~~~
 
 Dashboard: http://localhost:3333/dashboard
+
+O dashboard oferece quatro simulações: fluxo seguro (verde), tentativa de vazamento (laranja), cenário completo (laranja) e exposição crítica (vermelho, score 100). Cada simulação substitui os eventos anteriores.
 
 ## Privacidade
 

@@ -1,6 +1,6 @@
 # Relatório de Taint Analysis — TRAJEtória
 
-Gerado em: 2026-11-13T14:24:54.174Z
+Gerado em: 2026-11-16T13:54:24.999Z
 
 ## Resumo
 
@@ -39,7 +39,7 @@ Gerado em: 2026-11-13T14:24:54.174Z
 | `backend/http/responses.ts` | `sendJson` | 35, 76, 92, 96, 100 | guarded | sendJson seguro |
 | `backend/http/responses.ts` | `res.end` | 49, 60, 71, 88 | guarded | sendJson seguro |
 | `backend/routes/orders.ts` | `sendJson` | 18, 32, 61, 75, 83, 89, 104, 113, 141 | guarded | protectForOrder + protectForFeedback + publicView |
-| `backend/routes/security.ts` | `sendJson` | 63, 72, 95, 112, 134, 145, 154, 159, 168, 170 | guarded | buildDashboardPayload + protectPayload |
+| `backend/routes/security.ts` | `sendJson` | 63, 79, 108, 125, 147, 158, 167, 172, 181, 183 | guarded | buildDashboardPayload + protectPayload |
 | `backend/security/aiTranslator.ts` | `throw new Error` | 125, 130, 163, 168 | guarded | sanitizedEvent |
 | `backend/security/crypto.ts` | `throw new Error` | 32 | guarded | AES-256-GCM |
 | `backend/security/piiMiddleware.ts` | `throw new Error` | 83 | guarded | protectForLog/Ai/Response/Order/Feedback |

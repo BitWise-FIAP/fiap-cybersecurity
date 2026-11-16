@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T14:24:54.174Z",
+  "generatedAt": "2026-11-16T13:54:24.999Z",
   "tool": "trajetoria-taint-analysis",
   "version": "1.0.0",
   "description": "Análise estática source→sink do app TRAJEtória, backend de segurança e dashboard web.",
@@ -297,15 +297,15 @@
       "sink": "sendJson",
       "lines": [
         63,
-        72,
-        95,
-        112,
-        134,
-        145,
-        154,
-        159,
-        168,
-        170
+        79,
+        108,
+        125,
+        147,
+        158,
+        167,
+        172,
+        181,
+        183
       ],
       "occurrences": 10,
       "status": "guarded",

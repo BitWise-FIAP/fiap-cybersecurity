@@ -6,7 +6,7 @@
 
 **Entrega:** 19/11/2026
 
-**Integrantes:** [preencher nome completo e RM de cada integrante]
+**Integrantes:** Pedro Gaspar Fernandes Ferrari (RM 554887), Victor Freire (RM 556191) e Enrico Ricarte Rodrigues (RM 558571) · **Turma:** 3ESPH
 
 ---
 
@@ -25,7 +25,7 @@ Esta entrega adiciona uma camada de segurança ao projeto oficial, sem reescreve
 | Riscos aceitos e documentados | 17 |
 | Sinks sem proteção | 0 |
 | Risco residual estático | moderado |
-| Testes automatizados | 33 testes aprovados |
+| Testes automatizados | 34 testes aprovados |
 
 ## 2. Contexto e problema
 
@@ -176,6 +176,7 @@ O dashboard fica em /dashboard e é servido pelo backend. Ele exibe:
 - Distribuição por severidade e categoria.
 - Últimos eventos sanitizados com tradução em linguagem simples.
 - Aviso explícito de que nenhuma PII bruta é retornada.
+- Quatro simulações (vazamento, fluxo seguro, cenário completo e exposição crítica). Cada clique substitui os eventos anteriores, então o farol reflete apenas o cenário escolhido; a exposição crítica leva o score a 100.
 
 A captura do dashboard é gerada por npm run security:dashboard-shot e salva em docs/cybersecurity/evidencias/dashboard.png.
 
@@ -215,7 +216,7 @@ Arquivos de evidência em docs/cybersecurity/evidencias:
 - dashboard.png — captura do dashboard.
 - demo-result.json — resultado da simulação end-to-end.
 
-Resultado dos testes: **33 testes aprovados**, cobrindo PII, taint, risco, criptografia, tradutor e servidor HTTP.
+Resultado dos testes: **34 testes aprovados**, cobrindo PII, taint, risco, criptografia, tradutor e servidor HTTP.
 
 ## 11. Riscos residuais e melhorias
 
@@ -253,7 +254,7 @@ Dashboard: http://localhost:3333/dashboard
 - [x] Evidências JSON/HTML e captura do dashboard.
 - [x] Relatório em Markdown/HTML.
 - [x] PDF final e ZIP de código.
-- [ ] Preencher nomes e RMs dos integrantes.
+- [x] Nomes, RMs e turma preenchidos.
 
 ## 14. Referências
 
@@ -262,4 +263,4 @@ Dashboard: http://localhost:3333/dashboard
 - LGPD, Lei 13.709/2018, arts. 6º e 46.
 - Documentação do projeto TRAJEtória e repositório oficial BitWise-FIAP/fiap-mdi-TRAJEtoria.
 
-Relatório gerado em 13/11/2026, 11:30.
+Relatório gerado em 16/11/2026, 10:54.

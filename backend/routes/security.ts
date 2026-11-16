@@ -66,10 +66,23 @@ export function registerSecurityRoutes(router: Router): void {
   router.add('POST', '/api/security/demo', async (req, res, context) => {
     const body = await readJsonObject(req, res, context.config.maxBodyBytes);
     if (body === null) return;
-    const scenario = body.scenario === 'leak' || body.scenario === 'safe' ? body.scenario : 'mixed';
+    const scenario =
+      body.scenario === 'leak' ||
+      body.scenario === 'safe' ||
+      body.scenario === 'critical'
+        ? body.scenario
+        : 'mixed';
+    const reset = body.reset !== false;
+    if (reset) context.eventStore.clear();
     const created = createDemoEvents(context.eventStore, context.config, scenario);
     const payload = await buildDashboardPayload(context.eventStore, context.config);
-    sendJson(res, 200, { ok: true, scenario, created: created.length, ...payload });
+    sendJson(res, 200, {
+      ok: true,
+      scenario,
+      reset,
+      created: created.length,
+      ...payload,
+    });
   });
 
   router.add('POST', '/api/security/scan', async (req, res, context) => {
@@ -221,7 +234,7 @@ export function normalizeIncomingEvent(body: Record<string, unknown>): SecurityE
 export function createDemoEvents(
   eventStore: SecurityEventStore,
   config: AppConfig,
-  scenario: 'leak' | 'safe' | 'mixed',
+  scenario: 'leak' | 'safe' | 'mixed' | 'critical',
 ): SecurityEvent[] {
   const events: SecurityEvent[] = [];
 
@@ -295,6 +308,44 @@ export function createDemoEvents(
         ruleIds: [],
         message: 'Fluxo seguro: nenhum dado pessoal sensível encontrado.',
         metadata: { scenario: 'safe', context: 'demo.safe' },
+      }),
+    );
+  }
+
+  if (scenario === 'critical') {
+    events.push(
+      createSecurityEvent({
+        source: 'demo',
+        sink: 'http_response',
+        action: 'allowed',
+        category: 'credencial',
+        severity: 'critical',
+        ruleIds: ['FIELD-senha', 'PII-PASSWORD'],
+        message: 'Exposição crítica simulada de credencial em resposta pública.',
+        maskedValue: '[SIMULADO]',
+        metadata: { scenario: 'critical', context: 'demo.critical.credential' },
+      }),
+      createSecurityEvent({
+        source: 'demo',
+        sink: 'http_response',
+        action: 'allowed',
+        category: 'saude',
+        severity: 'critical',
+        ruleIds: ['PII-HEALTH'],
+        message: 'Exposição crítica simulada de dado de saúde em resposta pública.',
+        maskedValue: '[SIMULADO]',
+        metadata: { scenario: 'critical', context: 'demo.critical.health' },
+      }),
+      createSecurityEvent({
+        source: 'demo',
+        sink: 'http_response',
+        action: 'allowed',
+        category: 'identificacao',
+        severity: 'critical',
+        ruleIds: ['FIELD-cpf', 'PII-CPF'],
+        message: 'Exposição crítica simulada de documento em resposta pública.',
+        maskedValue: '[SIMULADO]',
+        metadata: { scenario: 'critical', context: 'demo.critical.identity' },
       }),
     );
   }

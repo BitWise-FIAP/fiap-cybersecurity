@@ -1,14 +1,15 @@
 {
-  "generatedAt": "2026-11-13T14:25:45.748Z",
-  "base": "http://127.0.0.1:59789",
+  "generatedAt": "2026-11-16T13:54:26.749Z",
+  "base": "http://127.0.0.1:54969",
   "demo": {
     "status": 200,
     "data": {
       "ok": true,
       "scenario": "mixed",
+      "reset": true,
       "created": 7,
       "app": "TRAJEtória",
-      "generatedAt": "2026-11-13T14:25:45.724Z",
+      "generatedAt": "2026-11-16T13:54:26.728Z",
       "risk": {
         "score": 56,
         "attemptedScore": 100,
@@ -35,7 +36,7 @@
           "financeiro": 0,
           "outro": 1
         },
-        "generatedAt": "2026-11-13T14:25:45.724Z"
+        "generatedAt": "2026-11-16T13:54:26.728Z"
       },
       "translation": {
         "message": "Uma tentativa de expor uma senha foi bloqueada antes de chegar aos logs. Nenhuma credencial saiu do sistema.",
@@ -45,8 +46,8 @@
       },
       "events": [
         {
-          "id": "evt_mwf2kc8q_bj7zzhez",
-          "timestamp": "2026-11-13T14:25:45.722Z",
+          "id": "evt_mwjbrmee_lgymufa3",
+          "timestamp": "2026-11-16T13:54:26.726Z",
           "source": "demo",
           "sink": "http_response",
           "action": "allowed",
@@ -61,8 +62,8 @@
           "riskLevel": "baixo"
         },
         {
-          "id": "evt_mwf2kc8q_subko7in",
-          "timestamp": "2026-11-13T14:25:45.722Z",
+          "id": "evt_mwjbrmee_mlbs74dd",
+          "timestamp": "2026-11-16T13:54:26.726Z",
           "source": "demo",
           "sink": "llm_prompt",
           "action": "blocked",
@@ -126,8 +127,8 @@
           "riskLevel": "baixo"
         },
         {
-          "id": "evt_mwf2kc8q_nqw8v3l2",
-          "timestamp": "2026-11-13T14:25:45.722Z",
+          "id": "evt_mwjbrmee_tu3ezh28",
+          "timestamp": "2026-11-16T13:54:26.726Z",
           "source": "demo",
           "sink": "database",
           "action": "masked",
@@ -154,8 +155,8 @@
           "riskLevel": "baixo"
         },
         {
-          "id": "evt_mwf2kc8q_r897jxhk",
-          "timestamp": "2026-11-13T14:25:45.722Z",
+          "id": "evt_mwjbrmee_ve8n6cwn",
+          "timestamp": "2026-11-16T13:54:26.726Z",
           "source": "demo",
           "sink": "database",
           "action": "encrypted",
@@ -218,8 +219,8 @@
           "riskLevel": "baixo"
         },
         {
-          "id": "evt_mwf2kc8p_cehv7xty",
-          "timestamp": "2026-11-13T14:25:45.721Z",
+          "id": "evt_mwjbrmed_sk5gokrw",
+          "timestamp": "2026-11-16T13:54:26.725Z",
           "source": "demo",
           "sink": "http_response",
           "action": "masked",
@@ -282,8 +283,8 @@
           "riskLevel": "baixo"
         },
         {
-          "id": "evt_mwf2kc8o_ycrrf80l",
-          "timestamp": "2026-11-13T14:25:45.720Z",
+          "id": "evt_mwjbrmec_a82ywtus",
+          "timestamp": "2026-11-16T13:54:26.724Z",
           "source": "demo",
           "sink": "http_response",
           "action": "blocked",
@@ -346,8 +347,8 @@
           "riskLevel": "baixo"
         },
         {
-          "id": "evt_mwf2kc8n_hrf6r9gp",
-          "timestamp": "2026-11-13T14:25:45.719Z",
+          "id": "evt_mwjbrmeb_ixbe8p7e",
+          "timestamp": "2026-11-16T13:54:26.723Z",
           "source": "demo",
           "sink": "log",
           "action": "blocked",
@@ -445,7 +446,7 @@
     "data": {
       "ok": true,
       "app": "TRAJEtória",
-      "generatedAt": "2026-11-13T14:25:45.733Z",
+      "generatedAt": "2026-11-16T13:54:26.737Z",
       "risk": {
         "score": 56,
         "attemptedScore": 100,
@@ -472,7 +473,7 @@
           "financeiro": 0,
           "outro": 1
         },
-        "generatedAt": "2026-11-13T14:25:45.733Z"
+        "generatedAt": "2026-11-16T13:54:26.737Z"
       },
       "translation": {
         "message": "Uma tentativa de expor uma senha foi bloqueada antes de chegar aos logs. Nenhuma credencial saiu do sistema.",
@@ -482,8 +483,8 @@
       },
       "events": [
         {
-          "id": "evt_mwf2kc8q_bj7zzhez",
-          "timestamp": "2026-11-13T14:25:45.722Z",
+          "id": "evt_mwjbrmee_lgymufa3",
+          "timestamp": "2026-11-16T13:54:26.726Z",
           "source": "demo",
           "sink": "http_response",
           "action": "allowed",
@@ -498,8 +499,8 @@
           "riskLevel": "baixo"
         },
         {
-          "id": "evt_mwf2kc8q_subko7in",
-          "timestamp": "2026-11-13T14:25:45.722Z",
+          "id": "evt_mwjbrmee_mlbs74dd",
+          "timestamp": "2026-11-16T13:54:26.726Z",
           "source": "demo",
           "sink": "llm_prompt",
           "action": "blocked",
@@ -563,8 +564,8 @@
           "riskLevel": "baixo"
         },
         {
-          "id": "evt_mwf2kc8q_nqw8v3l2",
-          "timestamp": "2026-11-13T14:25:45.722Z",
+          "id": "evt_mwjbrmee_tu3ezh28",
+          "timestamp": "2026-11-16T13:54:26.726Z",
           "source": "demo",
           "sink": "database",
           "action": "masked",
@@ -591,8 +592,8 @@
           "riskLevel": "baixo"
         },
         {
-          "id": "evt_mwf2kc8q_r897jxhk",
-          "timestamp": "2026-11-13T14:25:45.722Z",
+          "id": "evt_mwjbrmee_ve8n6cwn",
+          "timestamp": "2026-11-16T13:54:26.726Z",
           "source": "demo",
           "sink": "database",
           "action": "encrypted",
@@ -655,8 +656,8 @@
           "riskLevel": "baixo"
         },
         {
-          "id": "evt_mwf2kc8p_cehv7xty",
-          "timestamp": "2026-11-13T14:25:45.721Z",
+          "id": "evt_mwjbrmed_sk5gokrw",
+          "timestamp": "2026-11-16T13:54:26.725Z",
           "source": "demo",
           "sink": "http_response",
           "action": "masked",
@@ -719,8 +720,8 @@
           "riskLevel": "baixo"
         },
         {
-          "id": "evt_mwf2kc8o_ycrrf80l",
-          "timestamp": "2026-11-13T14:25:45.720Z",
+          "id": "evt_mwjbrmec_a82ywtus",
+          "timestamp": "2026-11-16T13:54:26.724Z",
           "source": "demo",
           "sink": "http_response",
           "action": "blocked",
@@ -783,8 +784,8 @@
           "riskLevel": "baixo"
         },
         {
-          "id": "evt_mwf2kc8n_hrf6r9gp",
-          "timestamp": "2026-11-13T14:25:45.719Z",
+          "id": "evt_mwjbrmeb_ixbe8p7e",
+          "timestamp": "2026-11-16T13:54:26.723Z",
           "source": "demo",
           "sink": "log",
           "action": "blocked",
@@ -961,7 +962,7 @@
           "financeiro": 0,
           "outro": 1
         },
-        "generatedAt": "2026-11-13T14:25:45.738Z"
+        "generatedAt": "2026-11-16T13:54:26.741Z"
       }
     }
   },
@@ -972,7 +973,7 @@
       "order": {
         "id": 1,
         "status": "solicitado",
-        "createdAt": "2026-11-13T14:25:45.744Z",
+        "createdAt": "2026-11-16T13:54:26.745Z",
         "items": [
           "1"
         ],
@@ -1023,7 +1024,7 @@
           "financeiro": 0,
           "outro": 1
         },
-        "generatedAt": "2026-11-13T14:25:45.744Z"
+        "generatedAt": "2026-11-16T13:54:26.745Z"
       }
     }
   },
@@ -1063,7 +1064,7 @@
           "financeiro": 0,
           "outro": 1
         },
-        "generatedAt": "2026-11-13T14:25:45.748Z"
+        "generatedAt": "2026-11-16T13:54:26.748Z"
       }
     }
   },
