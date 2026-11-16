@@ -452,7 +452,7 @@ function main(): void {
   md.push('- FIAP Global Solution 2026.2 — enunciado de Cybersecurity.');
   md.push('- OWASP Top 10 2021: A01 Broken Access Control, A02 Cryptographic Failures, A03 Injection, A09 Security Logging and Monitoring Failures.');
   md.push('- LGPD, Lei 13.709/2018, arts. 6º e 46.');
-  md.push('- Documentação do projeto TRAJEtória e repositório oficial BitWise-FIAP/fiap-mdi-TRAJEtoria.');
+  md.push('- Documentação do projeto TRAJEtória e repositório oficial BitWise-FIAP/fiap-cybersecurity.');
   md.push('');
   md.push(`Relatório gerado em ${generatedAt}.`);
 
@@ -740,7 +740,7 @@ npm run security:start</pre>
       <li>FIAP Global Solution 2026.2 — enunciado de Cybersecurity.</li>
       <li>OWASP Top 10 2021: A01 Broken Access Control, A02 Cryptographic Failures, A03 Injection, A09 Security Logging and Monitoring Failures.</li>
       <li>LGPD, Lei 13.709/2018, arts. 6º e 46.</li>
-      <li>Documentação do projeto TRAJEtória e repositório oficial BitWise-FIAP/fiap-mdi-TRAJEtoria.</li>
+      <li>Documentação do projeto TRAJEtória e repositório oficial BitWise-FIAP/fiap-cybersecurity.</li>
     </ul>
   </section>
 

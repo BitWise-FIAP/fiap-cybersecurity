@@ -261,6 +261,6 @@ Dashboard: http://localhost:3333/dashboard
 - FIAP Global Solution 2026.2 — enunciado de Cybersecurity.
 - OWASP Top 10 2021: A01 Broken Access Control, A02 Cryptographic Failures, A03 Injection, A09 Security Logging and Monitoring Failures.
 - LGPD, Lei 13.709/2018, arts. 6º e 46.
-- Documentação do projeto TRAJEtória e repositório oficial BitWise-FIAP/fiap-mdi-TRAJEtoria.
+- Documentação do projeto TRAJEtória e repositório oficial BitWise-FIAP/fiap-cybersecurity.
 
-Relatório gerado em 16/11/2026, 10:54.
+Relatório gerado em 16/11/2026, 13:27.
