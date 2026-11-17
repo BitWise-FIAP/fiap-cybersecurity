@@ -173,6 +173,10 @@ async function callGemini(
 }
 
 export function fallbackMessage(event: SecurityEvent): string {
+  if (event.severity === 'critical' && event.action === 'allowed') {
+    return 'Uma exposição crítica foi simulada em resposta pública. O farol vermelho sinaliza correção imediata; nenhum dado real foi exposto.';
+  }
+
   if (event.action === 'allowed') {
     return 'Nenhum dado sensível foi exposto. O fluxo autenticado permaneceu protegido e o risco é baixo.';
   }
